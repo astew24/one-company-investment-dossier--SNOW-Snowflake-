@@ -1,0 +1,8 @@
+# OS & temp
+.DS_Store
+Thumbs.db
+*.tmp
+~$*.xlsx
+
+# drafts not for show
+drafts/
