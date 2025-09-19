@@ -1,4 +1,3 @@
-# one-company-investment-dossier--SNOW-Snowflake-
 # One-Company Investment Dossier — [Snowflake] ([Snow])
 
 **Lens:** [AM / PE / VC] • **Timeline:** 10 days  
