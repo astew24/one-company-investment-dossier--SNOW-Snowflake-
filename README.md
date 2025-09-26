@@ -15,3 +15,4 @@ Artifacts coming soon:
 - Project page: [https://astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-/]
 - Sources Log: data/sources_log.csv
 - Model: model/Model.xlsx
+- n/a
