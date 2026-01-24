@@ -30,4 +30,13 @@
 - FCF conversion weakens despite cohort maturity.
 - AI discussion grows, but paid monetization evidence does not.
 
+## Q4 FY26 Preview Checklist (January 2026)
+
+Key questions heading into the Q4 print:
+- Does full-year product revenue guidance imply acceleration or deceleration vs Q3 run-rate?
+- Any change in RPO growth commentary — backlog conversion pace is a leading indicator for the next 2–3 quarters
+- Watch for: management tone on AI monetization pacing — "early traction" vs. "meaningful contribution" distinction matters for multiple
+- Operating leverage check: is opex growing slower than revenue after headcount actions?
+- If NRR commentary is negative, compare to prior quarter's language carefully — one-quarter noise vs. sustained trend
+
 *Use alongside `model/monitoring_triggers.csv` and `model/scenario_assumptions.csv` after each earnings cycle.*
