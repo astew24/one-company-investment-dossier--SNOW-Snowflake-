@@ -17,6 +17,7 @@ Snowflake can outperform expectations if AI monetization grows on top of core da
 - Multi-cloud positioning stays relevant for enterprises with mixed cloud environments.
 - Existing customer data gravity creates room for higher wallet share as new workloads are added.
 - Margin and cash conversion improve gradually as growth normalizes.
+- FCF conversion was 24%+ in the most recent reported quarter — demonstrates cash quality even before operating leverage fully materializes.
 
 ## What Could Break It
 - NRR trends down for multiple quarters instead of stabilizing.
