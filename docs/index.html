@@ -1,14 +1,241 @@
-Snowflake (SNOW) — cloud-based data warehousing & analytics platform.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNOW — One-Company Investment Dossier</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Public Equity (growth SaaS, misunderstood mid/large-cap with one core product).
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f0;
+      color: #1a1a1a;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
 
-I think Snowflake is undervalued because its expansion into AI-driven data applications will accelerate product adoption and revenue growth over the next 3–5 years, while the market is still pricing it primarily as a slowing data warehouse provider.
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
 
-<!doctype html><meta charset="utf-8">
-<title>Investment Dossier</title>
-<h1>Investment Dossier</h1>
-<ul>
-  <li><a href="../data/sources_log.csv">Sources Log (CSV)</a></li>
-  <li><a href="../model/Model.xlsx">Model (XLSX)</a></li>
-  <li><a href="../README.md">README</a></li>
-</ul>
+    header {
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .ticker {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    section {
+      margin-bottom: 2.25rem;
+    }
+
+    h2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      font-size: 0.92rem;
+      padding: 0.3rem 0;
+      color: #333;
+      padding-left: 1.1em;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #aaa;
+    }
+
+    .artifacts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .artifact-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 1rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .artifact-card:hover {
+      border-color: #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .artifact-card.disabled {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .artifact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 0.25rem;
+    }
+
+    .artifact-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .artifact-status {
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 0.2rem;
+    }
+
+    .thesis-box {
+      background: #fff;
+      border-left: 3px solid #1a1a1a;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .thesis-box p {
+      font-size: 0.97rem;
+      font-style: italic;
+      color: #222;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.75rem;
+      color: #aaa;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="ticker">NYSE: SNOW &nbsp;·&nbsp; Public Equity &nbsp;·&nbsp; Growth SaaS</div>
+    <h1>One-Company Investment Dossier</h1>
+    <div class="meta">Snowflake, Inc. &nbsp;·&nbsp; Independent equity research</div>
+  </header>
+
+  <section>
+    <h2>Thesis</h2>
+    <div class="thesis-box">
+      <p>Snowflake is undervalued because its expansion into AI-driven data applications will accelerate product adoption and revenue growth over the next 3–5 years, while the market continues to price it primarily as a slowing data warehouse provider.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Key Angles</h2>
+    <ul>
+      <li>Neutral data cloud — not locked into any single hyperscaler ecosystem</li>
+      <li>Cortex AI as an emerging application layer driving new monetization</li>
+      <li>Net Revenue Retention dynamics as enterprise cohorts compound</li>
+      <li>Data Marketplace and partner flywheel creating durable switching costs</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Deliverables</h2>
+    <div class="artifacts">
+      <span class="artifact-card disabled">
+        <div class="artifact-label">PDF</div>
+        <div class="artifact-name">Investment Memo</div>
+        <div class="artifact-status">In progress</div>
+      </span>
+      <span class="artifact-card disabled">
+        <div class="artifact-label">PDF</div>
+        <div class="artifact-name">Tear Sheet</div>
+        <div class="artifact-status">In progress</div>
+      </span>
+      <a href="../model/Model.xlsx" class="artifact-card">
+        <div class="artifact-label">XLSX</div>
+        <div class="artifact-name">Financial Model</div>
+        <div class="artifact-status">Available</div>
+      </a>
+      <a href="../data/sources_log.csv" class="artifact-card">
+        <div class="artifact-label">CSV</div>
+        <div class="artifact-name">Sources Log</div>
+        <div class="artifact-status">Available</div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Methodology</h2>
+    <ul>
+      <li>SEC filings — 10-K, 10-Q, S-1, proxy statements</li>
+      <li>Earnings call transcripts and investor day materials</li>
+      <li>Competitive analysis vs. Databricks, BigQuery, Redshift, Synapse</li>
+      <li>DCF with scenario analysis (base / bull / bear) and NRR-driven ARR build</li>
+      <li>Thesis stress-testing — concentration risk, AI commoditization, hyperscaler pricing pressure</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Independent equity research &mdash; not investment advice.</span>
+    <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-">View on GitHub</a>
+  </footer>
+
+</div>
+</body>
+</html>
