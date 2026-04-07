@@ -5,496 +5,404 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SNOW — Investment Dossier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --navy:   #0d1b2a;
-      --blue:   #1a3a5c;
-      --accent: #c8a84b;
-      --light:  #f7f6f3;
-      --white:  #ffffff;
-      --border: #e2e0db;
-      --muted:  #6b7280;
-      --text:   #1a1a1a;
-    }
-
     body {
-      font-family: "Inter", -apple-system, sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 15px;
+      background: #fafaf8;
+      color: #1c1c1c;
+      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.7;
+      padding: 0 1rem;
     }
 
-    /* ── TOP BAR ─────────────────────────────────────── */
-    .topbar {
-      background: var(--navy);
-      color: rgba(255,255,255,0.5);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.55rem 2rem;
+    a { color: inherit; }
+
+    /* ── MASTHEAD ─────────────────────────────────────── */
+    .masthead {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 0 1rem;
+      border-bottom: 2px solid #1c1c1c;
+    }
+
+    .masthead-top {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
-    .topbar a { color: rgba(255,255,255,0.5); text-decoration: none; }
-    .topbar a:hover { color: var(--accent); }
 
-    /* ── HERO ────────────────────────────────────────── */
-    .hero {
-      background: var(--navy);
-      color: var(--white);
-      padding: 3.5rem 2rem 2.75rem;
-    }
-    .hero-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .company-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
+    .masthead-top .co {
+      font-family: "IBM Plex Mono", monospace;
       font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.08em;
+      color: #888;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.1rem;
     }
-    .company-label::before {
-      content: "";
-      display: block;
-      width: 18px;
-      height: 1px;
-      background: var(--accent);
+
+    .masthead-top .date {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      color: #aaa;
     }
-    .hero h1 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.15;
+
+    .masthead h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      line-height: 1.1;
       letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-    }
-    .hero-sub {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
-      font-weight: 300;
-      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
     }
 
-    /* ── STATS STRIP ─────────────────────────────────── */
-    .stats-strip {
-      background: var(--blue);
-      border-top: 1px solid rgba(255,255,255,0.08);
+    .masthead .sub {
+      font-size: 0.95rem;
+      font-family: "IBM Plex Mono", monospace;
+      color: #666;
+      font-style: normal;
     }
-    .stats-inner {
-      max-width: 860px;
+
+    /* ── META ROW ─────────────────────────────────────── */
+    .meta-row {
+      max-width: 720px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      divide-color: rgba(255,255,255,0.1);
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
     }
-    .stat {
-      padding: 1.1rem 2rem 1.1rem 0;
-      margin: 0 0 0 2rem;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-    .stat:first-child { margin-left: 0; padding-left: 0; }
-    .stat:last-child { border-right: none; }
-    .stat-label {
+
+    .meta-item {}
+    .meta-item .k {
+      font-family: "IBM Plex Mono", monospace;
       font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 0.2rem;
+      color: #aaa;
+      display: block;
     }
-    .stat-value {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--white);
+    .meta-item .v {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      color: #333;
     }
 
-    /* ── BODY LAYOUT ─────────────────────────────────── */
-    .page {
-      max-width: 860px;
+    /* ── BODY ─────────────────────────────────────────── */
+    .body {
+      max-width: 720px;
       margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      padding: 2.5rem 0 5rem;
     }
 
     /* ── SECTION ─────────────────────────────────────── */
-    .section { margin-bottom: 3rem; }
+    .section {
+      margin-bottom: 2.75rem;
+    }
 
-    .section-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
+    .section h2 {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #999;
       margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
     }
 
     /* ── THESIS ──────────────────────────────────────── */
-    .thesis-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .thesis-card::before {
-      content: "\201C";
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 6rem;
-      color: var(--accent);
-      opacity: 0.18;
-      position: absolute;
-      top: -0.75rem;
-      left: 1rem;
-      line-height: 1;
-    }
-    .thesis-card p {
-      font-family: "Playfair Display", Georgia, serif;
-      font-style: italic;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      color: #222;
-      position: relative;
-      z-index: 1;
+    .thesis {
+      font-size: 1.22rem;
+      line-height: 1.65;
+      color: #1c1c1c;
+      border-left: 3px solid #1c1c1c;
+      padding-left: 1.25rem;
+      margin-left: 0;
     }
 
-    /* ── KEY ANGLES ──────────────────────────────────── */
-    .angle-list { list-style: none; }
-    .angle-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: #333;
+    /* ── LIST ─────────────────────────────────────────── */
+    .plain-list {
+      list-style: none;
+      padding: 0;
     }
-    .angle-list li:last-child { border-bottom: none; }
-    .angle-num {
+
+    .plain-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.97rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .plain-list li:last-child {
+      border-bottom: none;
+    }
+
+    .plain-list .n {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      color: #bbb;
       flex-shrink: 0;
-      width: 1.4rem;
-      height: 1.4rem;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: 0.62rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 0.1rem;
+      width: 1.2rem;
+      text-align: right;
     }
 
-    /* ── RISK FACTORS ────────────────────────────────── */
-    .risk-list { list-style: none; }
-    .risk-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: #333;
-    }
-    .risk-list li:last-child { border-bottom: none; }
-    .risk-dot {
-      flex-shrink: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #c0392b;
-      margin-top: 0.45rem;
-    }
-
-    /* ── METHODOLOGY ─────────────────────────────────── */
-    .method-grid {
+    /* ── TWO-COL ─────────────────────────────────────── */
+    .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .method-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-    }
-    .method-card-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-    }
-    .method-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.55;
+      gap: 3rem;
     }
 
-    /* ── DELIVERABLES ────────────────────────────────── */
-    .artifact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
+    /* ── DELIVERABLES TABLE ───────────────────────────── */
+    .deliverables {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
     }
-    .artifact-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1rem;
+
+    .deliverables th {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #aaa;
+      text-align: left;
+      padding: 0 0 0.6rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .deliverables td {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    .deliverables tr:last-child td {
+      border-bottom: none;
+    }
+
+    .deliverables td.name {
+      font-style: italic;
+      color: #1c1c1c;
+    }
+
+    .deliverables td.type {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: #999;
+      width: 4rem;
+    }
+
+    .deliverables td.status {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      color: #999;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .deliverables td.status.ready {
+      color: #2d7a4f;
+    }
+
+    .deliverables a {
       text-decoration: none;
       color: inherit;
-      display: block;
-      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
     }
-    .artifact-card:hover {
-      border-color: var(--navy);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      transform: translateY(-1px);
-    }
-    .artifact-card.pending {
-      opacity: 0.45;
-      pointer-events: none;
-    }
-    .artifact-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.6rem;
-    }
-    .artifact-type {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.2rem;
-    }
-    .artifact-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.3;
-      margin-bottom: 0.35rem;
-    }
-    .artifact-badge {
-      display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.45rem;
-      border-radius: 99px;
-    }
-    .badge-available {
-      background: #d1fae5;
-      color: #065f46;
-    }
-    .badge-pending {
-      background: #fef3c7;
-      color: #92400e;
+
+    .deliverables a:hover td {
+      color: #000;
     }
 
     /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.35);
-      font-size: 0.72rem;
-      padding: 1.5rem 2rem;
+    .footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+      border-top: 1px solid #ddd;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-    footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
+
+    .footer span,
+    .footer a {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.65rem;
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    .footer a:hover { color: #555; }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 640px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-      .grid-2, .method-grid { grid-template-columns: 1fr; }
-      .artifact-grid { grid-template-columns: repeat(2, 1fr); }
-      .page { padding: 2rem 1.25rem; }
-      .topbar { flex-direction: column; gap: 0.25rem; text-align: center; }
+    @media (max-width: 580px) {
+      .masthead h1 { font-size: 2rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .meta-row { gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <span>Independent Equity Research &mdash; Not Investment Advice</span>
-  <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-">View on GitHub &nearr;</a>
+<div class="masthead">
+  <div class="masthead-top">
+    <span class="co">One-Company Investment Dossier</span>
+    <span class="date">April 2026</span>
+  </div>
+  <h1>Snowflake, Inc.</h1>
+  <div class="sub">NYSE: SNOW &nbsp;&middot;&nbsp; Cloud Data Platform</div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="company-label">Investment Dossier</div>
-    <h1>Snowflake, Inc.</h1>
-    <div class="hero-sub">NYSE: SNOW &nbsp;&middot;&nbsp; Cloud Data Platform &nbsp;&middot;&nbsp; Growth SaaS</div>
+<div class="meta-row">
+  <div class="meta-item">
+    <span class="k">Asset Class</span>
+    <span class="v">Public Equity</span>
   </div>
-
-  <!-- STATS STRIP -->
-  <div class="stats-strip" style="margin: 2rem -2rem -2.75rem; padding: 0 2rem;">
-    <div class="stats-inner">
-      <div class="stat">
-        <div class="stat-label">Asset Class</div>
-        <div class="stat-value">Public Equity</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Coverage Type</div>
-        <div class="stat-value">Single-Name</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Sector</div>
-        <div class="stat-value">Cloud Infrastructure</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Horizon</div>
-        <div class="stat-value">3–5 Years</div>
-      </div>
-    </div>
+  <div class="meta-item">
+    <span class="k">Category</span>
+    <span class="v">Growth SaaS</span>
+  </div>
+  <div class="meta-item">
+    <span class="k">Coverage</span>
+    <span class="v">Single-Name</span>
+  </div>
+  <div class="meta-item">
+    <span class="k">Horizon</span>
+    <span class="v">3&ndash;5 Years</span>
   </div>
 </div>
 
-<!-- PAGE BODY -->
-<div class="page">
+<div class="body">
 
-  <!-- THESIS -->
   <div class="section">
-    <div class="section-label">Investment Thesis</div>
-    <div class="thesis-card">
-      <p>Snowflake is undervalued because its expansion into AI-driven data applications will accelerate product adoption and revenue growth over the next 3–5 years, while the market continues to price it primarily as a slowing data warehouse provider.</p>
-    </div>
+    <h2>Thesis</h2>
+    <p class="thesis">
+      Snowflake is undervalued because its expansion into AI-driven data applications
+      will accelerate product adoption and revenue growth over the next 3&ndash;5 years,
+      while the market continues to price it primarily as a slowing data warehouse provider.
+    </p>
   </div>
 
-  <!-- KEY ANGLES + RISKS -->
-  <div class="section grid-2">
+  <div class="section two-col">
     <div>
-      <div class="section-label">Key Angles</div>
-      <ul class="angle-list">
+      <h2>Key Angles</h2>
+      <ul class="plain-list">
         <li>
-          <span class="angle-num">1</span>
-          <span>Neutral data cloud not locked into any hyperscaler ecosystem — AWS, GCP, or Azure</span>
+          <span class="n">01</span>
+          <span>Neutral data cloud independent of any hyperscaler — operates across AWS, GCP, and Azure without ecosystem lock-in</span>
         </li>
         <li>
-          <span class="angle-num">2</span>
-          <span>Cortex AI as an emerging application layer driving net-new monetization</span>
+          <span class="n">02</span>
+          <span>Cortex AI creating a new application layer and monetization surface on top of existing data infrastructure</span>
         </li>
         <li>
-          <span class="angle-num">3</span>
-          <span>Net Revenue Retention compounding as enterprise cohorts deepen usage over time</span>
+          <span class="n">03</span>
+          <span>Net Revenue Retention compounding as enterprise cohorts deepen platform usage over time</span>
         </li>
         <li>
-          <span class="angle-num">4</span>
-          <span>Data Marketplace and partner flywheel building durable switching costs</span>
+          <span class="n">04</span>
+          <span>Data Marketplace and partner flywheel building durable switching costs at the data layer</span>
         </li>
       </ul>
     </div>
+
     <div>
-      <div class="section-label">Key Risks</div>
-      <ul class="risk-list">
+      <h2>Key Risks</h2>
+      <ul class="plain-list">
         <li>
-          <span class="risk-dot"></span>
-          <span>Customer concentration — large enterprise cohorts driving disproportionate revenue</span>
+          <span class="n">&mdash;</span>
+          <span>Customer concentration — a small number of large enterprise cohorts drive disproportionate revenue</span>
         </li>
         <li>
-          <span class="risk-dot"></span>
-          <span>AI commoditization could erode pricing power on core warehouse workloads</span>
+          <span class="n">&mdash;</span>
+          <span>AI commoditization could compress pricing power on core warehouse workloads</span>
         </li>
         <li>
-          <span class="risk-dot"></span>
-          <span>Hyperscaler pricing pressure from AWS Redshift, BigQuery, and Azure Synapse</span>
+          <span class="n">&mdash;</span>
+          <span>Hyperscaler bundling pressure from Redshift, BigQuery, and Synapse</span>
         </li>
         <li>
-          <span class="risk-dot"></span>
-          <span>Consumption-based model introduces revenue volatility in macro downturns</span>
+          <span class="n">&mdash;</span>
+          <span>Consumption-based model introduces revenue volatility during macro contractions</span>
         </li>
       </ul>
     </div>
   </div>
 
-  <!-- METHODOLOGY -->
   <div class="section">
-    <div class="section-label">Methodology</div>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-card-title">Primary Research</div>
-        <p>SEC filings (10-K, 10-Q, S-1), earnings call transcripts, investor day materials, and proxy statements</p>
-      </div>
-      <div class="method-card">
-        <div class="method-card-title">Competitive Analysis</div>
-        <p>Benchmarked against Databricks, Google BigQuery, AWS Redshift, and Azure Synapse on pricing, performance, and ecosystem</p>
-      </div>
-      <div class="method-card">
-        <div class="method-card-title">Financial Modeling</div>
-        <p>DCF with base / bull / bear scenarios; NRR-driven ARR build; consumption revenue bridge model</p>
-      </div>
-      <div class="method-card">
-        <div class="method-card-title">Thesis Stress-Testing</div>
-        <p>Sensitivity analysis on NRR, TAM penetration, and AI-driven workload growth assumptions</p>
-      </div>
-    </div>
+    <h2>Methodology</h2>
+    <p>
+      Primary research drawn from SEC filings (10-K, 10-Q, S-1) and proxy statements,
+      earnings call transcripts, and investor day presentations. Competitive positioning
+      benchmarked against Databricks, Google BigQuery, AWS Redshift, and Azure Synapse
+      across pricing, performance, and ecosystem reach.
+    </p>
+    <p>
+      Financial model built on a consumption revenue bridge with a NRR-driven ARR stack;
+      valuation via DCF under base, bull, and bear scenarios. Thesis stress-tested through
+      sensitivity analysis on NRR, TAM penetration rates, and AI workload growth assumptions.
+    </p>
   </div>
 
-  <!-- DELIVERABLES -->
   <div class="section">
-    <div class="section-label">Deliverables</div>
-    <div class="artifact-grid">
-      <span class="artifact-card pending">
-        <div class="artifact-icon">📄</div>
-        <div class="artifact-type">PDF</div>
-        <div class="artifact-name">Investment Memo</div>
-        <span class="artifact-badge badge-pending">In Progress</span>
-      </span>
-      <span class="artifact-card pending">
-        <div class="artifact-icon">📋</div>
-        <div class="artifact-type">PDF</div>
-        <div class="artifact-name">Tear Sheet</div>
-        <span class="artifact-badge badge-pending">In Progress</span>
-      </span>
-      <a href="../model/Model.xlsx" class="artifact-card">
-        <div class="artifact-icon">📊</div>
-        <div class="artifact-type">XLSX</div>
-        <div class="artifact-name">Financial Model</div>
-        <span class="artifact-badge badge-available">Available</span>
-      </a>
-      <a href="../data/sources_log.csv" class="artifact-card">
-        <div class="artifact-icon">🗂</div>
-        <div class="artifact-type">CSV</div>
-        <div class="artifact-name">Sources Log</div>
-        <span class="artifact-badge badge-available">Available</span>
-      </a>
-    </div>
+    <h2>Deliverables</h2>
+    <table class="deliverables">
+      <thead>
+        <tr>
+          <th>Document</th>
+          <th>Format</th>
+          <th style="text-align:right">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Investment Memo</td>
+          <td class="type">PDF</td>
+          <td class="status">In progress</td>
+        </tr>
+        <tr>
+          <td class="name">Tear Sheet</td>
+          <td class="type">PDF</td>
+          <td class="status">In progress</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="../model/Model.xlsx">Financial Model</a></td>
+          <td class="type">XLSX</td>
+          <td class="status ready">Available</td>
+        </tr>
+        <tr>
+          <td class="name"><a href="../data/sources_log.csv">Sources Log</a></td>
+          <td class="type">CSV</td>
+          <td class="status ready">Available</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <span>One-Company Investment Dossier &mdash; Snowflake (SNOW)</span>
-  <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-">github.com/astew24 &nearr;</a>
-</footer>
+<div class="footer">
+  <span>Independent equity research &mdash; not investment advice.</span>
+  <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-">github.com/astew24</a>
+</div>
 
 </body>
 </html>
