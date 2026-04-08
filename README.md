@@ -14,9 +14,11 @@ Snowflake is potentially undervalued if AI-enabled data application adoption dri
 |---|---|---|
 | Investment Memo | MD | [`brief/Investment_Memo.md`](brief/Investment_Memo.md) |
 | Tear Sheet | MD | [`brief/Tear_Sheet.md`](brief/Tear_Sheet.md) |
-| Resume Entry (copy/paste) | MD | [`brief/Resume_Entry.md`](brief/Resume_Entry.md) |
+| Catalyst & Risk Tracker | MD | [`brief/Catalyst_Tracker.md`](brief/Catalyst_Tracker.md) |
+| Interview Talk Track | MD | [`brief/Interview_Talk_Track.md`](brief/Interview_Talk_Track.md) |
 | Financial Model Workbook | XLSX | [`model/Model.xlsx`](model/Model.xlsx) |
 | Scenario Inputs | CSV | [`model/scenario_assumptions.csv`](model/scenario_assumptions.csv) |
+| Monitoring Triggers | CSV | [`model/monitoring_triggers.csv`](model/monitoring_triggers.csv) |
 | Model Notes | MD | [`model/README.md`](model/README.md) |
 | Sources Log | CSV | [`data/sources_log.csv`](data/sources_log.csv) |
 

@@ -6,3 +6,6 @@ Thumbs.db
 
 # drafts not for show
 drafts/
+
+# private resume content (local only)
+brief/Resume_Entry.md

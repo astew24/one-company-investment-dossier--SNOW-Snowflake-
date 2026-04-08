@@ -57,8 +57,10 @@ This dossier's model focuses on a consumption-led revenue bridge and scenario-ba
 
 ## 8) Deliverables in Repo
 - Tear sheet: `brief/Tear_Sheet.md`
-- Resume-ready project bullets: `brief/Resume_Entry.md`
+- Catalyst and risk tracker: `brief/Catalyst_Tracker.md`
+- Interview talk track: `brief/Interview_Talk_Track.md`
 - Model assumptions: `model/scenario_assumptions.csv`
+- Monitoring triggers: `model/monitoring_triggers.csv`
 - Source tracking: `data/sources_log.csv`
 
 *Not investment advice. For educational and recruiting portfolio use.*

@@ -34,9 +34,10 @@ Snowflake can outperform current expectations if AI-enabled data applications dr
 - Weak evidence of paid AI workload attachment
 
 ## Immediate Next Workstreams
-- Build quarterly KPI history table from filings/releases
-- Add explicit price target bridge by scenario
-- Add competitor pricing snapshots (Snowflake, BigQuery, Redshift, Synapse)
-- Run sensitivity table on NRR and terminal margin assumptions
+- Refresh quarterly KPI history table after each earnings release
+- Add explicit price-target bridge tied to scenario probabilities
+- Expand competitor pricing appendix (Snowflake, BigQuery, Redshift, Synapse)
+- Run sensitivity sweep on NRR, terminal margin, and discount-rate inputs
+- Maintain catalyst scoring in `brief/Catalyst_Tracker.md`
 
 *Independent research artifact for recruiting portfolio; not investment advice.*
