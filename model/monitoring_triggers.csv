@@ -1,9 +1,9 @@
-kpi,current_demo_value,positive_trigger,negative_trigger,update_cadence,primary_source
-product_revenue_growth_%,21.4,>=22 for 2 quarters,<18 for 2 quarters,Quarterly,SNOW quarterly results
-nrr_%,115,>=118 with stable churn,<=112 for 2 quarters,Quarterly,SNOW earnings materials
-gross_margin_%,74.0,>=75 with no growth slowdown,<=73 with weak growth,Quarterly,SNOW filings + earnings deck
-cfo_margin_%,27.7,>=29 with disciplined opex,<=25 despite opex controls,Quarterly,SNOW cash flow disclosures
-fcf_margin_%,24.1,>=26 while maintaining growth,<21 with growth deceleration,Quarterly,SNOW filings + release
-large_customer_momentum,Stable,Net adds + expansion commentary,Flat adds + lower spend depth,Quarterly,Earnings call transcript
-ai_attach_signal,Early monetization,Explicit paid adoption evidence,Usage growth without monetization,Quarterly,Product updates + management commentary
-pricing_pressure,Moderate,Differentiation holds in deal narrative,Frequent discounting to defend workloads,Quarterly,Competitor pricing + call commentary
+kpi,current_demo_value,positive_trigger,negative_trigger,action_if_positive,action_if_negative,update_cadence,primary_source
+product_revenue_growth_%,21.4,>=22 for 2 quarters,<18 for 2 quarters,Increase bull-case weight by 5 pts,Increase bear-case weight by 10 pts,Quarterly,SNOW quarterly results
+nrr_%,115,>=118 with stable churn,<=112 for 2 quarters,Raise conviction rating by one notch,Cut conviction rating by one notch,Quarterly,SNOW earnings materials
+gross_margin_%,74.0,>=75 with no growth slowdown,<=73 with weak growth,Lower reinvestment risk premium,Increase execution risk premium,Quarterly,SNOW filings + earnings deck
+cfo_margin_%,27.7,>=29 with disciplined opex,<=25 despite opex controls,Improve cash conversion assumptions,Reduce cash conversion assumptions,Quarterly,SNOW cash flow disclosures
+fcf_margin_%,24.1,>=26 while maintaining growth,<21 with growth deceleration,Narrow valuation discount range,Widen valuation discount range,Quarterly,SNOW filings + release
+large_customer_momentum,Stable,Net adds plus expansion commentary,Flat adds plus lower spend depth,Maintain base growth trajectory,Trim medium-term growth trajectory,Quarterly,Earnings call transcript
+ai_attach_signal,Early monetization,Explicit paid adoption evidence,Usage growth without monetization,Increase AI monetization contribution,Reduce AI monetization contribution,Quarterly,Product updates + management commentary
+pricing_pressure,Moderate,Differentiation holds in deal narrative,Frequent discounting to defend workloads,Maintain gross margin path,Haircut gross margin path,Quarterly,Competitor pricing + call commentary

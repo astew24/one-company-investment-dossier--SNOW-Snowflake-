@@ -1,34 +1,33 @@
 # SNOW Catalyst & Risk Tracker (12-Month Framework)
 
-**Purpose:** Convert thesis into an event-driven monitoring process an analyst can update each quarter.
+**Purpose:** Keep the thesis anchored to events and measurable signals, not narratives.
 
-## Event Calendar Framework
+## Event Calendar
 
 | Window | Event Type | Why It Matters | Bull Read | Bear Read | What To Update |
 |---|---|---|---|---|---|
-| Q1 earnings cycle | Quarterly results + guide | Tests demand durability in consumption model | Reacceleration or stable growth with healthy guide | Guide-down and weaker expansion commentary | Revenue bridge, NRR trend, scenario probabilities |
-| Q2 earnings cycle | Cohort quality check | Measures wallet-share depth across enterprise base | Improved large-customer expansion and durable retention | Slower cohort spend, rising concentration risk | Customer cohort notes, churn assumptions |
-| Q3 earnings cycle | Margin and cash profile inflection | Validates operating leverage path | Better CFO/FCF conversion with stable reinvestment | Margin pressure without growth payoff | Margin assumptions, FCF trajectory |
-| Q4 earnings cycle | FY reset + medium-term framing | Anchors next-year base/bull/bear ranges | Constructive medium-term framework on AI monetization | Cautious long-term language, muted AI attach | CAGR and terminal assumptions |
-| Product launch windows | AI/Platform feature releases | Indicates monetization surface expansion | Clear paid adoption pathways and enterprise use cases | Limited pricing power or feature parity noise | AI attach assumptions, TAM framing |
-| Competitive pricing windows | Hyperscaler/peer pricing changes | Can shift relative value and workload routing | SNOW differentiation holds despite price pressure | Aggressive bundling drives migration risk | Competitive section and downside case |
+| Earnings print + guide | Quarterly results + outlook | First check on demand quality and management confidence | Stable or improving growth quality with intact guidance | Guide-down and weaker expansion commentary | Revenue bridge, NRR trend, scenario weights |
+| Call Q&A / transcript | Management commentary quality | Helps separate one-off volatility from structural change | Specific, repeatable drivers behind pipeline and usage | Vague AI narrative without monetization detail | Thesis notes, risk flags |
+| Product release cadence | AI and platform launches | Tests whether new features are monetizable | Clear paid use cases and customer examples | Feature activity with limited commercial impact | AI attach assumptions |
+| Competitive pricing shifts | BigQuery/Redshift/Synapse/Databricks moves | Can affect workload economics and win rates | Differentiation holds without heavier discounting | Rising discount pressure to protect volume | Bear-case probability, margin assumptions |
+| Fiscal-year reset | Multi-quarter framing | Sets base case for next 4 quarters | Realistic targets with healthy conversion profile | Expectations reset lower with weaker visibility | CAGR, margin, and valuation ranges |
 
-## Catalyst Scoring Rubric (Simple)
-- `+2`: clear upside signal that improves probability of bull case
-- `+1`: mildly positive confirmation of thesis
-- `0`: mixed/neutral data
-- `-1`: mild deterioration vs. underwriting assumptions
-- `-2`: clear thesis break on key KPI or strategic leg
+## Scoring Rubric
+- `+2`: clear positive signal that raises bull-case probability
+- `+1`: incremental support for thesis
+- `0`: mixed/neutral signal
+- `-1`: deterioration versus underwriting assumptions
+- `-2`: thesis break on a core KPI or strategic leg
 
 ## Decision Rules
-- Raise position conviction when 2 consecutive updates score net positive and no red-flag KPI is breached.
-- Cut conviction when any red-flag KPI breaks for 2 consecutive quarters.
-- Keep sizing neutral when signals are mixed and valuation sensitivity remains wide.
+- Raise conviction after two consecutive net-positive updates without red-flag KPI breaks.
+- Cut conviction if any red-flag KPI remains broken for two consecutive quarters.
+- Stay neutral when evidence is mixed and scenario dispersion remains wide.
 
-## Red-Flag KPI Breaks
-- NRR trend moves structurally below underwriting range.
-- Growth decelerates while S&M intensity fails to improve.
-- FCF conversion weakens despite maturity of core cohorts.
-- Management commentary shifts from monetization to experimentation without revenue traction.
+## Red Flags
+- NRR moves and stays below underwriting range.
+- Growth decelerates without improvement in sales-efficiency profile.
+- FCF conversion weakens despite cohort maturity.
+- AI discussion grows, but paid monetization evidence does not.
 
-*Use alongside `model/monitoring_triggers.csv` and `model/scenario_assumptions.csv`.*
+*Use alongside `model/monitoring_triggers.csv` and `model/scenario_assumptions.csv` after each earnings cycle.*

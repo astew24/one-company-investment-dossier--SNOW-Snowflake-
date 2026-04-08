@@ -3,10 +3,11 @@
 **Asset Class:** Public Equity — Growth SaaS / Cloud Infrastructure  
 **Project Focus:** Single-name equity underwriting process  
 **Recruiting Use:** Finance / Equity Research / Investment Analyst applications  
+**Role Fit:** Equity Research, Long-Only AM, Public-Markets Analyst tracks  
 **Project Page:** [astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-](https://astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-)
 
 ## Investment Thesis
-Snowflake is potentially undervalued if AI-enabled data application adoption drives a second leg of monetization while enterprise data standardization supports durable retention and cash-flow progression.
+Snowflake can be mispriced when short-term consumption noise dominates the narrative and masks the durability of retention, cash generation, and product-surface expansion.
 
 ## Deliverables
 
@@ -22,25 +23,31 @@ Snowflake is potentially undervalued if AI-enabled data application adoption dri
 | Model Notes | MD | [`model/README.md`](model/README.md) |
 | Sources Log | CSV | [`data/sources_log.csv`](data/sources_log.csv) |
 
+## What Makes This Project Useful In Recruiting
+- Uses explicit decision rules rather than thesis-only language.
+- Separates catalyst tracking from valuation assumptions to avoid narrative drift.
+- Includes a repeatable post-earnings workflow (update KPIs, re-score risks, re-check scenario ranges).
+- Documents what would invalidate the thesis, not only what supports it.
+
 ## Analyst Skills Demonstrated
-- Financial modeling discipline: base/bull/bear scenario framing and sensitivity mindset
-- Public-market diligence: SEC filing workflow and earnings update cadence
-- KPI-driven underwriting: NRR, growth quality, operating leverage, cash conversion
-- Competitive analysis: Snowflake vs. hyperscaler and data-platform alternatives
-- Investment communication: thesis memo + tear sheet format for decision use
-- Process evidence: 12-quarter KPI sheet + 15-source research log for repeatable updates
+- Driver-based modeling: scenario framing with explicit sensitivity ranges
+- Public-market diligence: SEC-driven workflow and recurring earnings updates
+- KPI-based underwriting: NRR, growth quality, operating leverage, cash conversion
+- Competitive work: Snowflake vs. hyperscaler and data-platform alternatives
+- Investment communication: memo, tear sheet, and event tracker built for decision use
+- Process evidence: 12-quarter KPI sheet + source log for repeatable updates
 
 ## Methodology
 1. **Primary research** — SEC filings, investor materials, earnings updates
 2. **Competitive analysis** — BigQuery, Redshift, Synapse, Databricks pricing and positioning
 3. **Model framework** — scenario assumptions for growth, margin, and valuation sensitivity
-4. **Risk testing** — concentration, pricing pressure, consumption volatility, AI commoditization
+4. **Risk testing** — concentration, pricing pressure, consumption volatility, AI monetization uncertainty
 
 ## Repository Structure
 
 ```
 .
-├── brief/          # Memo, tear sheet, and resume-ready writeup
+├── brief/          # Memo, tear sheet, tracker, and interview notes
 ├── data/           # Source log for evidence tracking
 ├── docs/           # GitHub Pages site
 ├── model/          # Workbook + scenario assumptions + notes

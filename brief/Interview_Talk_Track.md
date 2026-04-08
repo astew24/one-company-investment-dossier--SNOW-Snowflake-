@@ -1,24 +1,24 @@
 # Interview Talk Track — Snowflake Dossier
 
 ## 30-Second Summary
-I built an end-to-end single-name equity dossier on Snowflake to practice analyst workflow: thesis framing, scenario-based valuation, risk testing, and repeatable KPI monitoring. The core view is that AI-enabled data applications can support a second monetization leg, but I underwrite that upside against retention durability, competitive pricing pressure, and cash-flow conversion.
+I treated Snowflake as a live single-name coverage exercise: built a three-case model, set KPI triggers, and documented what would confirm or break the thesis. My working view is constructive, but only if retention and cash conversion stay healthy while AI monetization becomes measurable.
 
 ## 90-Second Deep Dive
-My process started with a variant view question: is Snowflake being priced as a maturing warehouse business while platform breadth is expanding faster than consensus assumes? From there I built three scenario cases and mapped each case to KPI thresholds, not just narratives.
+I started with a simple variant question: is Snowflake being priced as a maturing warehouse business while the product surface is broadening faster than consensus expects? I then built base, bull, and bear cases and tied each to measurable triggers rather than opinion language.
 
-I tracked a 12-quarter KPI history, created a source log across filings, investor materials, and competitor pricing pages, and then translated the work into memo and tear-sheet outputs. What I learned is that for consumption software names, trend quality matters more than one quarter's print, so I focused on retention durability, margin progression, and evidence of paid AI workload attachment.
+I tracked a 12-quarter KPI history, logged source references across filings and earnings materials, and compared Snowflake's setup against competitor pricing posture. The key learning was that with consumption software names, trend quality matters more than one quarter's print, so my monitoring focuses on retention, margin progression, and paid AI attachment.
 
 ## Questions I Expect and How I Answer
-- **Why Snowflake vs hyperscalers?**
-  Multi-cloud neutrality and collaboration can remain differentiated for enterprises operating across cloud stacks; I still model bundling risk explicitly in the bear case.
-- **What breaks the thesis fastest?**
-  Sustained NRR deterioration plus weak FCF conversion, because that combination would undermine both growth durability and valuation support.
-- **What would make you increase conviction?**
-  Two consecutive quarters of stable/improving retention and clear AI monetization signals with no margin degradation.
+- **Why this name and not just the hyperscalers?**  
+  Snowflake still has a credible role in multi-cloud environments and cross-cloud collaboration, but I model bundling pressure explicitly because that is the fastest path to downside.
+- **What breaks your thesis first?**  
+  Sustained NRR pressure plus weaker FCF conversion. If both move the wrong way, the quality of growth argument fails.
+- **What would make you upgrade conviction?**  
+  Two consecutive quarters with stable retention, cleaner conversion, and direct evidence that AI features are paid, not just adopted.
 
 ## How This Demonstrates Analyst Readiness
-- Structured ambiguity into testable scenarios.
-- Converted qualitative narratives into KPI triggers.
-- Built communication artifacts for different audiences (memo, tear sheet, resume bullets).
+- Framed an ambiguous narrative into testable scenarios.
+- Converted qualitative points into KPI trigger rules.
+- Built communication outputs for memo, tear sheet, and interview discussion.
 
 *Prepared as a recruiting discussion asset; not investment advice.*
