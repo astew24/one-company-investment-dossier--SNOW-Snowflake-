@@ -39,4 +39,13 @@ Key questions heading into the Q4 print:
 - Operating leverage check: is opex growing slower than revenue after headcount actions?
 - If NRR commentary is negative, compare to prior quarter's language carefully — one-quarter noise vs. sustained trend
 
+## Q1 FY27 Preview Checklist (April 2026)
+
+Post Q4 print — key questions heading into Q1:
+- Did the Q4 beat come with guide-up or just in-line Q1 guidance? Guidance quality matters more than the beat size.
+- AI monetization: any shift from "early traction" to revenue-line contribution? Watch for Cortex-specific disclosures.
+- NRR: watch for the first sign of cohort inflection — the expansion rate from newer cohorts should be improving by now if the product thesis is intact.
+- International: are ex-US growth rates starting to close the gap with domestic? Still underpenetrated relative to US cloud peers.
+- Check operating margin trajectory — headcount discipline should be showing up here by Q1 FY27.
+
 *Use alongside `model/monitoring_triggers.csv` and `model/scenario_assumptions.csv` after each earnings cycle.*
