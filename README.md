@@ -4,7 +4,8 @@
 **Project Focus:** Single-name equity underwriting process  
 **Recruiting Use:** Finance / Equity Research / Investment Analyst applications  
 **Role Fit:** Equity Research, Long-Only AM, Public-Markets Analyst tracks  
-**Project Page:** [astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-](https://astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-)
+**Live Demo:** [astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-](https://astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-)  
+**Repository:** [github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-](https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-)
 
 ## Investment Thesis
 Snowflake can be mispriced when short-term consumption noise dominates the narrative and masks the durability of retention, cash generation, and product-surface expansion.
@@ -13,6 +14,7 @@ Snowflake can be mispriced when short-term consumption noise dominates the narra
 
 | Artifact | Format | Status |
 |---|---|---|
+| Streamlit Dossier App | PY | [`streamlit_app.py`](streamlit_app.py) |
 | Investment Memo | MD | [`brief/Investment_Memo.md`](brief/Investment_Memo.md) |
 | Tear Sheet | MD | [`brief/Tear_Sheet.md`](brief/Tear_Sheet.md) |
 | Catalyst & Risk Tracker | MD | [`brief/Catalyst_Tracker.md`](brief/Catalyst_Tracker.md) |
@@ -22,6 +24,31 @@ Snowflake can be mispriced when short-term consumption noise dominates the narra
 | Monitoring Triggers | CSV | [`model/monitoring_triggers.csv`](model/monitoring_triggers.csv) |
 | Model Notes | MD | [`model/README.md`](model/README.md) |
 | Sources Log | CSV | [`data/sources_log.csv`](data/sources_log.csv) |
+| Python Dependencies | TXT | [`requirements.txt`](requirements.txt) |
+
+## Streamlit App
+
+The repo now includes a read-only Streamlit presentation in [`streamlit_app.py`](streamlit_app.py). It renders the dossier as a structured web page with:
+
+- thesis header and live SNOW price from `yfinance`
+- long / short debate view from the markdown briefs
+- scenario table from [`model/scenario_assumptions.csv`](model/scenario_assumptions.csv)
+- KPI history chart from [`model/Model.xlsx`](model/Model.xlsx)
+- catalyst map, risk matrix, and full source log tables
+
+### Run Locally
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+### Notes
+
+- The app is fully read-only.
+- No API keys are required.
+- `yfinance` is used for the live market price.
+- The repo does not currently store explicit scenario price targets, so the app falls back to `yfinance` analyst low / mean / high targets for the valuation comparison chart until authored targets are added.
 
 ## What Makes This Project Useful In Recruiting
 - Uses explicit decision rules rather than thesis-only language.
@@ -51,6 +78,8 @@ Snowflake can be mispriced when short-term consumption noise dominates the narra
 ├── data/           # Source log for evidence tracking
 ├── docs/           # GitHub Pages site
 ├── model/          # Workbook + scenario assumptions + notes
+├── streamlit_app.py
+├── requirements.txt
 └── README.md
 ```
 

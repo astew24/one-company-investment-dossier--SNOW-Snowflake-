@@ -3,452 +3,1429 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SNOW — Investment Dossier</title>
+  <title>SNOW Research Demo</title>
+  <meta
+    name="description"
+    content="Employer-facing live demo of a Snowflake single-name equity research workflow."
+  >
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #fafaf8;
-      color: #1c1c1c;
-      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
-      font-size: 18px;
-      line-height: 1.7;
-      padding: 0 1rem;
+    :root {
+      --bg: #f4efe5;
+      --bg-soft: rgba(255, 255, 255, 0.62);
+      --panel: rgba(255, 252, 247, 0.88);
+      --panel-strong: rgba(255, 252, 247, 0.96);
+      --ink: #1e2430;
+      --muted: #5e6779;
+      --line: rgba(30, 36, 48, 0.12);
+      --line-strong: rgba(30, 36, 48, 0.22);
+      --accent: #114b5f;
+      --accent-soft: #d6ebee;
+      --base: #2e7d6b;
+      --bull: #1d6f42;
+      --bear: #9a3d2f;
+      --warning: #ab7a16;
+      --shadow: 0 24px 80px rgba(29, 36, 48, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
     }
 
-    a { color: inherit; }
-
-    /* ── MASTHEAD ─────────────────────────────────────── */
-    .masthead {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3.5rem 0 1rem;
-      border-bottom: 2px solid #1c1c1c;
-    }
-
-    .masthead-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .masthead-top .co {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      color: #888;
-      text-transform: uppercase;
-    }
-
-    .masthead-top .date {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.7rem;
-      color: #aaa;
-    }
-
-    .masthead h1 {
-      font-size: 2.8rem;
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.4rem;
-    }
-
-    .masthead .sub {
-      font-size: 0.95rem;
-      font-family: "IBM Plex Mono", monospace;
-      color: #666;
-      font-style: normal;
-    }
-
-    /* ── META ROW ─────────────────────────────────────── */
-    .meta-row {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    .meta-item {}
-    .meta-item .k {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #aaa;
-      display: block;
-    }
-    .meta-item .v {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.78rem;
-      color: #333;
-    }
-
-    /* ── BODY ─────────────────────────────────────────── */
-    .body {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2.5rem 0 5rem;
-    }
-
-    /* ── SECTION ─────────────────────────────────────── */
-    .section {
-      margin-bottom: 2.75rem;
-    }
-
-    .section h2 {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 1rem;
-    }
-
-    .section p {
-      margin-bottom: 1rem;
-    }
-
-    .section p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── THESIS ──────────────────────────────────────── */
-    .thesis {
-      font-size: 1.22rem;
-      line-height: 1.65;
-      color: #1c1c1c;
-      border-left: 3px solid #1c1c1c;
-      padding-left: 1.25rem;
-      margin-left: 0;
-    }
-
-    /* ── LIST ─────────────────────────────────────────── */
-    .plain-list {
-      list-style: none;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
     }
 
-    .plain-list li {
-      padding: 0.55rem 0;
-      border-bottom: 1px solid #eee;
-      font-size: 0.97rem;
-      display: flex;
-      gap: 1rem;
-      align-items: baseline;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .plain-list li:last-child {
-      border-bottom: none;
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(17, 75, 95, 0.18), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(171, 122, 22, 0.12), transparent 18rem),
+        linear-gradient(180deg, #f8f3ea 0%, #efe8dc 100%);
+      color: var(--ink);
+      font-family: "Fraunces", Georgia, serif;
+      line-height: 1.45;
+      padding: 24px;
     }
 
-    .plain-list .n {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .mono {
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.7rem;
-      color: #bbb;
-      flex-shrink: 0;
-      width: 1.2rem;
-      text-align: right;
     }
 
-    /* ── TWO-COL ─────────────────────────────────────── */
-    .two-col {
+    .surface {
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.7;
+    }
+
+    .hero::before {
+      width: 18rem;
+      height: 18rem;
+      right: -5rem;
+      top: -6rem;
+      background: radial-gradient(circle, rgba(17, 75, 95, 0.2), transparent 70%);
+    }
+
+    .hero::after {
+      width: 12rem;
+      height: 12rem;
+      left: -4rem;
+      bottom: -3rem;
+      background: radial-gradient(circle, rgba(171, 122, 22, 0.16), transparent 70%);
+    }
+
+    .hero-grid {
+      position: relative;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.95fr);
+      gap: 24px;
+      align-items: stretch;
     }
 
-    /* ── DELIVERABLES TABLE ───────────────────────────── */
-    .deliverables {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-
-    .deliverables th {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.08);
+      color: var(--accent);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #aaa;
+      font-size: 0.72rem;
+    }
+
+    .eyebrow .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--base);
+      box-shadow: 0 0 0 6px rgba(46, 125, 107, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .hero-copy p {
+      max-width: 34rem;
+      margin-top: 18px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--ink);
+      color: #fff9f0;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(30, 36, 48, 0.14);
+      color: var(--ink);
+    }
+
+    .hero-panel {
+      position: relative;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(247, 242, 234, 0.92) 100%);
+      border: 1px solid rgba(30, 36, 48, 0.1);
+      padding: 22px;
+      display: grid;
+      gap: 18px;
+      animation: rise 700ms ease both;
+    }
+
+    .panel-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.09);
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .hero-panel h2 {
+      font-size: 1.4rem;
+      line-height: 1.05;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-panel li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .hero-panel li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .hero-panel li span:first-child {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.1);
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(30, 36, 48, 0.08);
+    }
+
+    .meta-card .label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .meta-card .value {
+      font-size: 1rem;
+    }
+
+    .section {
+      margin-bottom: 24px;
+      padding: 26px;
+      border-radius: var(--radius-xl);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .kicker {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .grid-four {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card,
+    .rail-card,
+    .deliverable-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.68);
+      padding: 18px;
+    }
+
+    .feature-card h3,
+    .rail-card h3,
+    .deliverable-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p,
+    .rail-card p,
+    .deliverable-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .feature-card .index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.1);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 600;
+    }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .scenario-rail,
+    .scenario-output,
+    .monitor-panel {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      padding: 18px;
+    }
+
+    .scenario-rail {
+      position: sticky;
+      top: 20px;
+    }
+
+    .scenario-rail h3,
+    .monitor-panel h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .scenario-rail p,
+    .monitor-panel p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .scenario-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .scenario-button {
+      width: 100%;
       text-align: left;
-      padding: 0 0 0.6rem;
-      border-bottom: 1px solid #ddd;
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(30, 36, 48, 0.1);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
     }
 
-    .deliverables td {
-      padding: 0.65rem 0;
-      border-bottom: 1px solid #eee;
-      vertical-align: top;
+    .scenario-button:hover,
+    .scenario-button:focus-visible,
+    .scenario-button.active {
+      transform: translateY(-1px);
+      border-color: rgba(17, 75, 95, 0.28);
+      box-shadow: 0 10px 28px rgba(29, 36, 48, 0.09);
     }
 
-    .deliverables tr:last-child td {
-      border-bottom: none;
+    .scenario-button.active {
+      background: rgba(214, 235, 238, 0.56);
     }
 
-    .deliverables td.name {
-      font-style: italic;
-      color: #1c1c1c;
+    .scenario-button .name {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.02rem;
     }
 
-    .deliverables td.type {
+    .scenario-button .detail {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .scenario-output {
+      overflow: hidden;
+    }
+
+    .scenario-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .scenario-header h3 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .scenario-header p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 40rem;
+      font-size: 0.98rem;
+    }
+
+    .scenario-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.72rem;
-      color: #999;
-      width: 4rem;
-    }
-
-    .deliverables td.status {
-      font-family: "IBM Plex Mono", monospace;
-      font-size: 0.72rem;
-      color: #999;
-      text-align: right;
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .deliverables td.status.ready {
-      color: #2d7a4f;
+    .scenario-pill::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.8;
     }
 
-    .deliverables a {
-      text-decoration: none;
-      color: inherit;
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
     }
 
-    .deliverables a:hover td {
-      color: #000;
+    .metric-card {
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
     }
 
-    /* ── FOOTER ──────────────────────────────────────── */
-    .footer {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 1.5rem 0 3rem;
-      border-top: 1px solid #ddd;
+    .metric-card .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", monospace;
+      margin-bottom: 12px;
+    }
+
+    .metric-card .value-row {
       display: flex;
       justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .metric-card .value {
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .metric-card .context {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .meter {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(30, 36, 48, 0.08);
+      overflow: hidden;
+    }
+
+    .meter span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      width: 0;
+      transition: width 340ms ease;
+      background: linear-gradient(90deg, rgba(17, 75, 95, 0.75), rgba(46, 125, 107, 0.95));
+    }
+
+    .implication {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(17, 75, 95, 0.11), rgba(255, 255, 255, 0.9));
+      border: 1px solid rgba(17, 75, 95, 0.12);
+    }
+
+    .implication h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .implication p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .implication .badge {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      font-family: "IBM Plex Mono", monospace;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .monitor-layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .filter-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .filter-chip {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(30, 36, 48, 0.1);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      cursor: pointer;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .filter-chip:hover,
+    .filter-chip:focus-visible,
+    .filter-chip.active {
+      transform: translateY(-1px);
+      border-color: rgba(17, 75, 95, 0.28);
+      background: rgba(214, 235, 238, 0.56);
+    }
+
+    .trigger-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trigger-card {
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      min-height: 100%;
+      animation: fadeIn 260ms ease both;
+    }
+
+    .trigger-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .trigger-card h4 {
+      font-size: 1rem;
+      line-height: 1.15;
+    }
+
+    .trigger-card .category {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.08);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.68rem;
+      font-family: "IBM Plex Mono", monospace;
+      white-space: nowrap;
+    }
+
+    .trigger-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .trigger-meta div {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(244, 239, 229, 0.86);
+    }
+
+    .trigger-meta dt,
+    .trigger-actions dt,
+    .trigger-footer dt {
+      margin-bottom: 6px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.68rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    .trigger-meta dd,
+    .trigger-actions dd,
+    .trigger-footer dd {
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .trigger-actions,
+    .trigger-footer {
+      display: grid;
+      gap: 10px;
+    }
+
+    .trigger-action {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .trigger-action.positive {
+      border-color: rgba(29, 111, 66, 0.18);
+    }
+
+    .trigger-action.negative {
+      border-color: rgba(154, 61, 47, 0.18);
+    }
+
+    .rails-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .rail-card {
+      min-height: 100%;
+    }
+
+    .rail-card .tag {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(17, 75, 95, 0.08);
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .deliverable-card {
+      display: grid;
+      gap: 12px;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .deliverable-card:hover,
+    .deliverable-card:focus-within {
+      transform: translateY(-2px);
+      border-color: rgba(17, 75, 95, 0.24);
+      box-shadow: 0 16px 34px rgba(29, 36, 48, 0.08);
+    }
+
+    .deliverable-card .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+
+    .deliverable-card .arrow {
+      font-size: 1rem;
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .footer span,
-    .footer a {
+      padding: 18px 4px 8px;
+      color: var(--muted);
+      font-size: 0.84rem;
       font-family: "IBM Plex Mono", monospace;
-      font-size: 0.65rem;
-      color: #bbb;
-      text-decoration: none;
     }
 
-    .footer a:hover { color: #555; }
+    .site-footer a:hover,
+    .site-footer a:focus-visible {
+      color: var(--ink);
+    }
 
-    /* ── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 580px) {
-      .masthead h1 { font-size: 2rem; }
-      .two-col { grid-template-columns: 1fr; gap: 2rem; }
-      .meta-row { gap: 1.5rem; }
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .demo-layout,
+      .monitor-layout,
+      .grid-four,
+      .rails-grid,
+      .deliverables-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scenario-rail {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 14px;
+      }
+
+      .hero,
+      .section {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .hero-meta,
+      .metrics-grid,
+      .trigger-grid,
+      .deliverables-grid,
+      .rails-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+      }
+
+      .scenario-header,
+      .implication,
+      .site-footer {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .scenario-header {
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="page-shell">
+    <header class="hero surface">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow mono">
+            <span class="dot"></span>
+            Live Demo For Employers
+          </div>
+          <h1>Snowflake single-name research, presented safely.</h1>
+          <p>
+            This page is an employer-facing walkthrough of how I structure a public-equity
+            research process: thesis formation, scenario framing, post-earnings monitoring,
+            and evidence tracking. It is intentionally not a live trading tool.
+          </p>
+          <p>
+            Filing-backed workflow is the point. Any demo-only number is labeled so reviewers
+            can evaluate process quality without mistaking this for investment advice or a
+            real-time recommendation engine.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#interactive-demo">Open Interactive Demo</a>
+            <a class="button button-secondary" href="#deliverables">View Deliverables</a>
+            <a
+              class="button button-secondary"
+              href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-"
+              target="_blank"
+              rel="noreferrer"
+            >Open Repository</a>
+          </div>
+        </div>
 
-<div class="masthead">
-  <div class="masthead-top">
-    <span class="co">One-Company Investment Dossier</span>
-    <span class="date">April 2026</span>
+        <aside class="hero-panel">
+          <span class="panel-tag">Safe Demo Mode</span>
+          <h2>What this page does and does not do</h2>
+          <ul>
+            <li>
+              <span>01</span>
+              <div><strong>Shows workflow.</strong> Thesis, scenarios, triggers, and documentation are visible in one pass.</div>
+            </li>
+            <li>
+              <span>02</span>
+              <div><strong>Flags illustrative values.</strong> Demo metrics are separated from filing-backed source tracking.</div>
+            </li>
+            <li>
+              <span>03</span>
+              <div><strong>Avoids false precision.</strong> No brokerage integration, no price alerts, no claim of live market coverage.</div>
+            </li>
+          </ul>
+          <div class="hero-meta">
+            <div class="meta-card">
+              <span class="label">Ticker</span>
+              <span class="value">NYSE: SNOW</span>
+            </div>
+            <div class="meta-card">
+              <span class="label">Horizon</span>
+              <span class="value">3-5 years</span>
+            </div>
+            <div class="meta-card">
+              <span class="label">Reviewer View</span>
+              <span class="value">Portfolio demo</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="section surface">
+      <div class="section-head">
+        <div>
+          <span class="kicker">What Employers Can Evaluate</span>
+          <h2>Four concrete signals in one review.</h2>
+        </div>
+        <p>
+          The goal is to make analytical process legible fast: what I believe, what would break
+          it, how assumptions are framed, and how I would update the view after earnings.
+        </p>
+      </div>
+      <div class="grid-four">
+        <article class="feature-card">
+          <span class="index">01</span>
+          <h3>Variant view</h3>
+          <p>The thesis is framed around a specific mispricing question, not a generic company summary.</p>
+        </article>
+        <article class="feature-card">
+          <span class="index">02</span>
+          <h3>Scenario discipline</h3>
+          <p>Base, bull, and bear cases translate the story into explicit growth, retention, margin, and discount-rate assumptions.</p>
+        </article>
+        <article class="feature-card">
+          <span class="index">03</span>
+          <h3>Update cadence</h3>
+          <p>Quarterly triggers define when conviction should rise, stay neutral, or fall instead of relying on narrative drift.</p>
+        </article>
+        <article class="feature-card">
+          <span class="index">04</span>
+          <h3>Evidence trail</h3>
+          <p>Source logging and document links make it obvious where the work comes from and where demo-mode stops.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section surface" id="interactive-demo">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Interactive Walkthrough</span>
+          <h2>Switch scenarios like you would in a live conversation.</h2>
+        </div>
+        <p>
+          The values below come from the repository's scenario inputs. This keeps the demo honest:
+          it is interactive, but it is still grounded in the same assumptions that drive the written work.
+        </p>
+      </div>
+
+      <div class="demo-layout">
+        <aside class="scenario-rail">
+          <h3>Scenario selector</h3>
+          <p>Use this during a recruiting conversation to show how the underwriting changes when retention, margin, and cost-of-capital assumptions move.</p>
+          <div class="scenario-list" role="tablist" aria-label="Scenario selector">
+            <button class="scenario-button active" data-scenario="Base" role="tab" aria-selected="true">
+              <span class="name">Base case</span>
+              <span class="detail">Moderating growth, steady cash conversion, disciplined but not heroic execution.</span>
+            </button>
+            <button class="scenario-button" data-scenario="Bull" role="tab" aria-selected="false">
+              <span class="name">Bull case</span>
+              <span class="detail">AI monetization lands, NRR holds, and margins expand with better operating leverage.</span>
+            </button>
+            <button class="scenario-button" data-scenario="Bear" role="tab" aria-selected="false">
+              <span class="name">Bear case</span>
+              <span class="detail">Retention softens, pricing pressure rises, and valuation needs a harsher discount.</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="scenario-output" aria-live="polite">
+          <div class="scenario-header">
+            <div>
+              <span class="kicker" id="scenario-kicker">Current view</span>
+              <h3 id="scenario-title">Base case</h3>
+              <p id="scenario-summary"></p>
+            </div>
+            <div class="scenario-pill mono" id="scenario-pill">Balanced underwriting</div>
+          </div>
+
+          <div class="metrics-grid" id="metrics-grid"></div>
+
+          <div class="implication">
+            <div>
+              <h4 id="scenario-implication-title">What this tells an employer</h4>
+              <p id="scenario-implication-copy"></p>
+            </div>
+            <div class="badge" id="scenario-badge">Recruiting view</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section surface">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Post-Earnings Monitor</span>
+          <h2>Show the decision rules, not just the idea.</h2>
+        </div>
+        <p>
+          These trigger cards are generated from the repo's monitoring table. They demonstrate how the view
+          is supposed to be updated when a quarter comes in, which is usually the most useful part of the project in interviews.
+        </p>
+      </div>
+
+      <div class="monitor-layout">
+        <aside class="monitor-panel">
+          <h3>Filter the trigger set</h3>
+          <p>Each category isolates a different failure mode or source of upside. The current values shown here are demo values from the tracker file.</p>
+          <div class="filter-list" role="tablist" aria-label="Trigger categories">
+            <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">All triggers</button>
+            <button class="filter-chip" data-filter="growth" role="tab" aria-selected="false">Growth and retention</button>
+            <button class="filter-chip" data-filter="margins" role="tab" aria-selected="false">Margins and cash</button>
+            <button class="filter-chip" data-filter="platform" role="tab" aria-selected="false">AI, pricing, and customers</button>
+          </div>
+          <p class="mono">Quarterly update rule: refresh source docs, reconcile assumptions, then re-score conviction.</p>
+        </aside>
+
+        <div class="trigger-grid" id="trigger-grid"></div>
+      </div>
+    </section>
+
+    <section class="section surface">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Review This Safely</span>
+          <h2>Guardrails are part of the demo.</h2>
+        </div>
+        <p>
+          If an employer opens this cold, the page should make clear what is real process evidence and what is
+          only here to make the workflow easier to inspect quickly.
+        </p>
+      </div>
+
+      <div class="rails-grid">
+        <article class="rail-card">
+          <span class="tag">Filing-backed</span>
+          <h3>Source-first workflow</h3>
+          <p>The memo, tear sheet, tracker, and source log are the authoritative artifacts. The demo exists to guide reviewers into them.</p>
+        </article>
+        <article class="rail-card">
+          <span class="tag">Illustrative only</span>
+          <h3>Demo values are labeled</h3>
+          <p>Current trigger values and workbook examples are intentionally framed as portfolio-demo inputs, not live investment judgments.</p>
+        </article>
+        <article class="rail-card">
+          <span class="tag">Not advice</span>
+          <h3>No execution layer</h3>
+          <p>No brokerage hooks, no order flow, no alerting, and no live price feed. This is research process presentation, not financial advice software.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section surface" id="deliverables">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Open The Work</span>
+          <h2>Every supporting artifact is one click away.</h2>
+        </div>
+        <p>
+          These links use GitHub paths so they work from the live site. That avoids the broken-path problem
+          you get when a GitHub Pages site tries to link outside the published `docs` root.
+        </p>
+      </div>
+
+      <div class="deliverables-grid">
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Investment_Memo.md" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Brief / MD</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Investment memo</h3>
+          <p>Full thesis write-up, risks, and why the name can be mispriced.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Tear_Sheet.md" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Brief / MD</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Tear sheet</h3>
+          <p>Condensed view for quick review before or during an interview discussion.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Catalyst_Tracker.md" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Brief / MD</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Catalyst and risk tracker</h3>
+          <p>Event framework, scoring rubric, and decision rules for updating conviction.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Interview_Talk_Track.md" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Brief / MD</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Interview talk track</h3>
+          <p>Structured prompts for explaining the thesis and pressure-testing assumptions verbally.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/model/scenario_assumptions.csv" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Model / CSV</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Scenario inputs</h3>
+          <p>Bear, base, and bull assumptions used to drive the interactive walkthrough above.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/model/monitoring_triggers.csv" target="_blank" rel="noreferrer">
+          <div class="topline">
+            <span>Model / CSV</span>
+            <span class="arrow">-></span>
+          </div>
+          <h3>Monitoring triggers</h3>
+          <p>Thresholds, actions, cadence, and source references for each KPI under watch.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>Independent equity research portfolio demo. Not investment advice.</span>
+      <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-" target="_blank" rel="noreferrer">github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-</a>
+    </footer>
   </div>
-  <h1>Snowflake, Inc.</h1>
-  <div class="sub">NYSE: SNOW &nbsp;&middot;&nbsp; Cloud Data Platform</div>
-</div>
 
-<div class="meta-row">
-  <div class="meta-item">
-    <span class="k">Asset Class</span>
-    <span class="v">Public Equity</span>
-  </div>
-  <div class="meta-item">
-    <span class="k">Category</span>
-    <span class="v">Growth SaaS</span>
-  </div>
-  <div class="meta-item">
-    <span class="k">Coverage</span>
-    <span class="v">Single-Name</span>
-  </div>
-  <div class="meta-item">
-    <span class="k">Horizon</span>
-    <span class="v">3&ndash;5 Years</span>
-  </div>
-</div>
+  <script>
+    const scenarios = {
+      Bear: {
+        name: "Bear case",
+        summary: "Assumes retention softens, bundling pressure increases, and Snowflake needs to absorb a tougher valuation framework while growth decelerates.",
+        pill: "Downside discipline",
+        color: "#9a3d2f",
+        implication: "This shows I am not using a single-story growth pitch. The downside case is explicit about what happens when retention and pricing power fail to hold.",
+        badge: "Risk-aware framing",
+        metrics: [
+          { label: "3Y revenue CAGR", value: "15%", numeric: 15, min: 15, max: 28, context: "Scenario assumption" },
+          { label: "NRR assumption", value: "108%", numeric: 108, min: 108, max: 120, context: "Retention pressure" },
+          { label: "Gross margin target", value: "72%", numeric: 72, min: 72, max: 76, context: "Pricing pressure reflected" },
+          { label: "CFO margin target", value: "22%", numeric: 22, min: 22, max: 33, context: "Lower operating leverage" },
+          { label: "WACC", value: "10.0%", numeric: 10, min: 8.5, max: 10, context: "Higher required return" },
+          { label: "Terminal growth", value: "2.5%", numeric: 2.5, min: 2.5, max: 3.5, context: "More conservative exit" }
+        ]
+      },
+      Base: {
+        name: "Base case",
+        summary: "Assumes growth moderates but remains healthy, retention stays serviceable, and cash conversion improves without needing an aggressive AI ramp.",
+        pill: "Balanced underwriting",
+        color: "#2e7d6b",
+        implication: "This is the recruiting-friendly default because it shows process balance: upside exists, but the central case still requires discipline around margins and retention.",
+        badge: "Core underwriting",
+        metrics: [
+          { label: "3Y revenue CAGR", value: "22%", numeric: 22, min: 15, max: 28, context: "Scenario assumption" },
+          { label: "NRR assumption", value: "114%", numeric: 114, min: 108, max: 120, context: "Stabilizing expansion" },
+          { label: "Gross margin target", value: "74%", numeric: 74, min: 72, max: 76, context: "In line with a steady path" },
+          { label: "CFO margin target", value: "28%", numeric: 28, min: 22, max: 33, context: "Improving conversion" },
+          { label: "WACC", value: "9.0%", numeric: 9, min: 8.5, max: 10, context: "Middle valuation stance" },
+          { label: "Terminal growth", value: "3.0%", numeric: 3, min: 2.5, max: 3.5, context: "Moderate long-run view" }
+        ]
+      },
+      Bull: {
+        name: "Bull case",
+        summary: "Assumes AI workload monetization scales, customer expansion stays strong, and margin structure improves as newer products deepen wallet share.",
+        pill: "Upside capture",
+        color: "#1d6f42",
+        implication: "The upside case is not hand-wavy. It still passes through specific assumptions on NRR, margins, and discount rates, which makes it easier to debate in an interview.",
+        badge: "Upside mechanism",
+        metrics: [
+          { label: "3Y revenue CAGR", value: "28%", numeric: 28, min: 15, max: 28, context: "Scenario assumption" },
+          { label: "NRR assumption", value: "120%", numeric: 120, min: 108, max: 120, context: "Higher expansion quality" },
+          { label: "Gross margin target", value: "76%", numeric: 76, min: 72, max: 76, context: "Stronger mix and pricing" },
+          { label: "CFO margin target", value: "33%", numeric: 33, min: 22, max: 33, context: "Better operating leverage" },
+          { label: "WACC", value: "8.5%", numeric: 8.5, min: 8.5, max: 10, context: "Lower required return" },
+          { label: "Terminal growth", value: "3.5%", numeric: 3.5, min: 2.5, max: 3.5, context: "Higher durable-growth view" }
+        ]
+      }
+    };
 
-<div class="body">
+    const triggers = [
+      {
+        key: "product_revenue_growth_%",
+        title: "Product revenue growth",
+        currentValue: "21.4",
+        positiveTrigger: ">=22 for 2 quarters",
+        negativeTrigger: "<18 for 2 quarters",
+        actionIfPositive: "Increase bull-case weight by 5 pts",
+        actionIfNegative: "Increase bear-case weight by 10 pts",
+        cadence: "Quarterly",
+        primarySource: "SNOW quarterly results",
+        category: "growth"
+      },
+      {
+        key: "nrr_%",
+        title: "Net revenue retention",
+        currentValue: "115",
+        positiveTrigger: ">=118 with stable churn",
+        negativeTrigger: "<=112 for 2 quarters",
+        actionIfPositive: "Raise conviction rating by one notch",
+        actionIfNegative: "Cut conviction rating by one notch",
+        cadence: "Quarterly",
+        primarySource: "SNOW earnings materials",
+        category: "growth"
+      },
+      {
+        key: "gross_margin_%",
+        title: "Gross margin",
+        currentValue: "74.0",
+        positiveTrigger: ">=75 with no growth slowdown",
+        negativeTrigger: "<=73 with weak growth",
+        actionIfPositive: "Lower reinvestment risk premium",
+        actionIfNegative: "Increase execution risk premium",
+        cadence: "Quarterly",
+        primarySource: "SNOW filings + earnings deck",
+        category: "margins"
+      },
+      {
+        key: "cfo_margin_%",
+        title: "CFO margin",
+        currentValue: "27.7",
+        positiveTrigger: ">=29 with disciplined opex",
+        negativeTrigger: "<=25 despite opex controls",
+        actionIfPositive: "Improve cash conversion assumptions",
+        actionIfNegative: "Reduce cash conversion assumptions",
+        cadence: "Quarterly",
+        primarySource: "SNOW cash flow disclosures",
+        category: "margins"
+      },
+      {
+        key: "fcf_margin_%",
+        title: "FCF margin",
+        currentValue: "24.1",
+        positiveTrigger: ">=26 while maintaining growth",
+        negativeTrigger: "<21 with growth deceleration",
+        actionIfPositive: "Narrow valuation discount range",
+        actionIfNegative: "Widen valuation discount range",
+        cadence: "Quarterly",
+        primarySource: "SNOW filings + release",
+        category: "margins"
+      },
+      {
+        key: "large_customer_momentum",
+        title: "Large-customer momentum",
+        currentValue: "Stable",
+        positiveTrigger: "Net adds plus expansion commentary",
+        negativeTrigger: "Flat adds plus lower spend depth",
+        actionIfPositive: "Maintain base growth trajectory",
+        actionIfNegative: "Trim medium-term growth trajectory",
+        cadence: "Quarterly",
+        primarySource: "Earnings call transcript",
+        category: "platform"
+      },
+      {
+        key: "ai_attach_signal",
+        title: "AI attach signal",
+        currentValue: "Early monetization",
+        positiveTrigger: "Explicit paid adoption evidence",
+        negativeTrigger: "Usage growth without monetization",
+        actionIfPositive: "Increase AI monetization contribution",
+        actionIfNegative: "Reduce AI monetization contribution",
+        cadence: "Quarterly",
+        primarySource: "Product updates + management commentary",
+        category: "platform"
+      },
+      {
+        key: "pricing_pressure",
+        title: "Pricing pressure",
+        currentValue: "Moderate",
+        positiveTrigger: "Differentiation holds in deal narrative",
+        negativeTrigger: "Frequent discounting to defend workloads",
+        actionIfPositive: "Maintain gross margin path",
+        actionIfNegative: "Haircut gross margin path",
+        cadence: "Quarterly",
+        primarySource: "Competitor pricing + call commentary",
+        category: "platform"
+      }
+    ];
 
-  <div class="section">
-    <h2>Thesis</h2>
-    <p class="thesis">
-      Snowflake may be mispriced when near-term consumption volatility dominates the narrative
-      and obscures the durability of retention, cash conversion, and paid AI workload expansion.
-    </p>
-  </div>
+    const scenarioButtons = Array.from(document.querySelectorAll(".scenario-button"));
+    const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
+    const metricsGrid = document.getElementById("metrics-grid");
+    const triggerGrid = document.getElementById("trigger-grid");
 
-  <div class="section two-col">
-    <div>
-      <h2>Key Angles</h2>
-      <ul class="plain-list">
-        <li>
-          <span class="n">01</span>
-          <span>Multi-cloud positioning remains relevant for enterprises operating across AWS, GCP, and Azure</span>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <span>AI and application-layer features create a second monetization surface beyond core query/storage spend</span>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <span>Retention and cohort expansion are treated as primary valuation drivers, not supporting metrics</span>
-        </li>
-        <li>
-          <span class="n">04</span>
-          <span>Data-sharing workflows and ecosystem depth can strengthen switching friction over time</span>
-        </li>
-      </ul>
-    </div>
+    const scenarioTitle = document.getElementById("scenario-title");
+    const scenarioSummary = document.getElementById("scenario-summary");
+    const scenarioPill = document.getElementById("scenario-pill");
+    const scenarioImplicationCopy = document.getElementById("scenario-implication-copy");
+    const scenarioBadge = document.getElementById("scenario-badge");
 
-    <div>
-      <h2>Key Risks</h2>
-      <ul class="plain-list">
-        <li>
-          <span class="n">&mdash;</span>
-          <span>Concentration risk if large-customer expansion narrows to fewer cohorts</span>
-        </li>
-        <li>
-          <span class="n">&mdash;</span>
-          <span>AI monetization risk if feature adoption is not matched by paid usage expansion</span>
-        </li>
-        <li>
-          <span class="n">&mdash;</span>
-          <span>Bundling and pricing pressure from hyperscaler offerings</span>
-        </li>
-        <li>
-          <span class="n">&mdash;</span>
-          <span>Consumption model can produce noisy quarter-to-quarter prints during weaker demand periods</span>
-        </li>
-      </ul>
-    </div>
-  </div>
+    function toPercentWidth(value, min, max) {
+      if (max === min) return "100%";
+      return ((value - min) / (max - min) * 100).toFixed(0) + "%";
+    }
 
-  <div class="section">
-    <h2>Methodology</h2>
-    <p>
-      Research workflow is filing-first: SEC disclosures, investor materials, and
-      quarterly earnings updates logged in a source tracker for auditability.
-      Competitive work compares Snowflake to Databricks, BigQuery, Redshift, and Synapse
-      with focus on pricing posture, workload fit, and platform depth.
-    </p>
-    <p>
-      Modeling is scenario-based (base/bull/bear) with explicit trigger thresholds on
-      growth quality, retention, margins, and cash conversion. After each earnings print,
-      assumptions are refreshed before conviction is updated.
-    </p>
-  </div>
+    function renderScenario(name) {
+      const scenario = scenarios[name];
+      scenarioTitle.textContent = scenario.name;
+      scenarioSummary.textContent = scenario.summary;
+      scenarioPill.textContent = scenario.pill;
+      scenarioPill.style.color = scenario.color;
+      scenarioPill.style.background = scenario.color === "#9a3d2f"
+        ? "rgba(154, 61, 47, 0.10)"
+        : scenario.color === "#1d6f42"
+          ? "rgba(29, 111, 66, 0.10)"
+          : "rgba(46, 125, 107, 0.10)";
+      scenarioImplicationCopy.textContent = scenario.implication;
+      scenarioBadge.textContent = scenario.badge;
 
-  <div class="section">
-    <h2>Analyst Skills Demonstrated</h2>
-    <ul class="plain-list">
-      <li>
-        <span class="n">01</span>
-        <span>Single-name underwriting process with clear variant view and explicit break conditions</span>
-      </li>
-      <li>
-        <span class="n">02</span>
-        <span>Driver-based scenario modeling with assumption logging and sensitivity testing</span>
-      </li>
-      <li>
-        <span class="n">03</span>
-        <span>Filing-based public-market diligence with repeatable post-earnings KPI refresh cadence</span>
-      </li>
-      <li>
-        <span class="n">04</span>
-        <span>Communication outputs built for investment discussion: memo, tear sheet, and catalyst tracker</span>
-      </li>
-    </ul>
-  </div>
+      metricsGrid.innerHTML = scenario.metrics.map((metric) => {
+        const width = toPercentWidth(metric.numeric, metric.min, metric.max);
+        return `
+          <article class="metric-card">
+            <span class="label">${metric.label}</span>
+            <div class="value-row">
+              <span class="value">${metric.value}</span>
+              <span class="context">${metric.context}</span>
+            </div>
+            <div class="meter" aria-hidden="true">
+              <span style="width:${width}; background: linear-gradient(90deg, ${scenario.color}, rgba(17, 75, 95, 0.92));"></span>
+            </div>
+          </article>
+        `;
+      }).join("");
 
-  <div class="section">
-    <h2>Deliverables</h2>
-    <table class="deliverables">
-      <thead>
-        <tr>
-          <th>Document</th>
-          <th>Format</th>
-          <th style="text-align:right">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="name"><a href="../brief/Investment_Memo.md">Investment Memo</a></td>
-          <td class="type">MD</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../brief/Tear_Sheet.md">Tear Sheet</a></td>
-          <td class="type">MD</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../brief/Catalyst_Tracker.md">Catalyst &amp; Risk Tracker</a></td>
-          <td class="type">MD</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../brief/Interview_Talk_Track.md">Interview Talk Track</a></td>
-          <td class="type">MD</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../model/Model.xlsx">Financial Model</a></td>
-          <td class="type">XLSX</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../model/scenario_assumptions.csv">Scenario Inputs</a></td>
-          <td class="type">CSV</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../model/monitoring_triggers.csv">Monitoring Triggers</a></td>
-          <td class="type">CSV</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../model/README.md">Model Notes</a></td>
-          <td class="type">MD</td>
-          <td class="status ready">Available</td>
-        </tr>
-        <tr>
-          <td class="name"><a href="../data/sources_log.csv">Sources Log</a></td>
-          <td class="type">CSV</td>
-          <td class="status ready">Available</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      scenarioButtons.forEach((button) => {
+        const isActive = button.dataset.scenario === name;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    }
 
-</div>
+    function triggerCategoryLabel(category) {
+      if (category === "growth") return "Growth";
+      if (category === "margins") return "Margins";
+      return "Platform";
+    }
 
-<div class="footer">
-  <span>Independent equity research &mdash; not investment advice.</span>
-  <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-">github.com/astew24</a>
-</div>
+    function renderTriggers(filter) {
+      const filtered = filter === "all"
+        ? triggers
+        : triggers.filter((trigger) => trigger.category === filter);
 
+      triggerGrid.innerHTML = filtered.map((trigger) => `
+        <article class="trigger-card">
+          <div class="trigger-top">
+            <h4>${trigger.title}</h4>
+            <span class="category">${triggerCategoryLabel(trigger.category)}</span>
+          </div>
+          <dl class="trigger-meta">
+            <div>
+              <dt>Current demo value</dt>
+              <dd>${trigger.currentValue}</dd>
+            </div>
+            <div>
+              <dt>Update cadence</dt>
+              <dd>${trigger.cadence}</dd>
+            </div>
+          </dl>
+          <div class="trigger-actions">
+            <div class="trigger-action positive">
+              <dt>Positive trigger</dt>
+              <dd>${trigger.positiveTrigger}</dd>
+            </div>
+            <div class="trigger-action negative">
+              <dt>Negative trigger</dt>
+              <dd>${trigger.negativeTrigger}</dd>
+            </div>
+          </div>
+          <div class="trigger-footer">
+            <div class="trigger-action positive">
+              <dt>Action if positive</dt>
+              <dd>${trigger.actionIfPositive}</dd>
+            </div>
+            <div class="trigger-action negative">
+              <dt>Action if negative</dt>
+              <dd>${trigger.actionIfNegative}</dd>
+            </div>
+            <div class="trigger-action">
+              <dt>Primary source</dt>
+              <dd>${trigger.primarySource}</dd>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.filter === filter;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    }
+
+    scenarioButtons.forEach((button) => {
+      button.addEventListener("click", () => renderScenario(button.dataset.scenario));
+    });
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => renderTriggers(button.dataset.filter));
+    });
+
+    renderScenario("Base");
+    renderTriggers("all");
+  </script>
 </body>
 </html>
