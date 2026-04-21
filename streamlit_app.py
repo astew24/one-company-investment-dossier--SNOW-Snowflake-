@@ -326,12 +326,12 @@ def render_sidebar() -> None:
     st.sidebar.title("Browse")
     st.sidebar.markdown(
         """
-        - Header
-        - Section 1 - Long/Short Debate
-        - Section 2 - Valuation
-        - Section 3 - KPI History
-        - Section 4 - Catalyst Map & Risk Matrix
-        - Section 5 - Sources
+        - Thesis header
+        - Long / short debate
+        - Valuation
+        - KPI history
+        - Catalyst map & risk matrix
+        - Sources
         """
     )
     st.sidebar.divider()
@@ -409,7 +409,7 @@ def render_long_short_debate(tear_sheet_text: str) -> None:
     short_case = extract_bullet_blocks(get_section(tear_sheet_text, "What Could Break It"))
     scenario_framing = parse_named_bullets(get_section(tear_sheet_text, "Quick Scenario Framing"))
 
-    st.header("Section 1 - Long/Short Debate")
+    st.header("Long / short debate")
     left, right = st.columns(2)
 
     with left:
@@ -443,7 +443,7 @@ def render_valuation(
     scenario_prices: dict[str, float],
     scenario_price_source: str,
 ) -> None:
-    st.header("Section 2 - Valuation")
+    st.header("Valuation")
 
     table_df = scenario_df.rename(
         columns={
@@ -511,7 +511,7 @@ def render_valuation(
 
 
 def render_kpi_history(kpi_df: pd.DataFrame) -> None:
-    st.header("Section 3 - KPI History")
+    st.header("KPI history")
 
     chart_df = kpi_df[["quarter", "revenue", "fcf", "nrr_%"]].copy()
     chart_df["is_estimate"] = chart_df["quarter"].astype(str).str.contains("E", regex=False)
@@ -575,7 +575,7 @@ def render_kpi_history(kpi_df: pd.DataFrame) -> None:
 
 
 def render_catalysts_and_risks(catalyst_text: str, memo_text: str) -> None:
-    st.header("Section 4 - Catalyst Map & Risk Matrix")
+    st.header("Catalyst map & risk matrix")
 
     catalyst_df = extract_first_table(get_section(catalyst_text, "Event Calendar"))
     risk_df = build_risk_matrix(get_section(memo_text, "Risk Matrix"))
@@ -591,7 +591,7 @@ def render_catalysts_and_risks(catalyst_text: str, memo_text: str) -> None:
 
 
 def render_sources(sources_df: pd.DataFrame) -> None:
-    st.header("Section 5 - Sources")
+    st.header("Sources")
 
     display_df = sources_df.rename(
         columns={
