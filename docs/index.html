@@ -87,1253 +87,150 @@
     }
 
     .surface {
-      background: white;
-      border: 1px solid var(--line);
+      background: transparent;
+      border: none;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: var(--space-48);
-      margin-bottom: var(--space-24);
+      padding: var(--space-48) 0;
+      margin-bottom: var(--space-48);
       border-bottom: 2px solid var(--ink);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.95fr);
-      gap: var(--space-48);
-      align-items: stretch;
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-80);
+      align-items: start;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: var(--space-16);
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      font-weight: 500;
-      font-family: "Space Grotesk", monospace;
-    }
-
-    .eyebrow .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-    }
-
-    h1, h2, h3, h4 {
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    h1 {
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      margin-bottom: var(--space-24);
-    }
-
-    .hero-copy p {
-      max-width: 65ch;
-      margin-top: var(--space-16);
-      font-size: 1.125rem;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-16);
-      margin-top: var(--space-32);
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 var(--space-24);
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.82rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-primary {
-      background: var(--ink);
-      color: var(--warm-ash-cream);
-    }
-
-    .button-secondary {
-      background: transparent;
-      border: 1px solid var(--line);
-      color: var(--ink);
-    }
-
-    .button-secondary:hover {
-      border-color: var(--accent);
-    }
-
+    /* Remove the 'boxy' look from the panel */
     .hero-panel {
       position: relative;
-      background: var(--warm-ash-cream-dark);
-      border: 1px solid var(--line);
-      padding: var(--space-32);
+      background: transparent;
+      border: none;
+      border-left: 1px solid var(--line);
+      padding: 0 0 0 var(--space-32);
       display: grid;
       gap: var(--space-24);
     }
 
-    .panel-tag {
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .hero-panel h2 {
-      font-size: 1.75rem;
-      margin-bottom: 0;
-    }
-
-    .hero-panel ul {
-      list-style: none;
-      display: grid;
-      gap: var(--space-16);
-    }
-
-    .hero-panel li {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--space-16);
-      align-items: start;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .hero-panel li strong {
-      color: var(--ink);
-      font-family: "Instrument Sans", sans-serif;
-      font-weight: 600;
-    }
-
-    .hero-panel li span:first-child {
-      display: inline-flex;
-      width: 24px;
-      height: 24px;
-      align-items: center;
-      justify-content: center;
-      border-left: 2px solid var(--accent);
-      color: var(--accent);
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding-left: 8px;
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-8);
-    }
-
     .meta-card {
-      padding: var(--space-16);
-      border: 1px solid var(--line);
-      background: white;
-    }
-
-    .meta-card .label {
-      display: block;
-      margin-bottom: var(--space-8);
-      color: var(--accent);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-family: "Space Grotesk", monospace;
-    }
-
-    .meta-card .value {
-      font-size: 0.95rem;
-      font-weight: 500;
+      padding: var(--space-16) 0;
+      border: none;
+      border-top: 1px solid var(--line);
+      background: transparent;
     }
 
     .section {
-      margin-bottom: var(--space-24);
-      padding: var(--space-48);
-      background: white;
+      margin-bottom: var(--space-80);
+      padding: 0;
+      background: transparent;
     }
 
     .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: var(--space-32);
-      margin-bottom: var(--space-32);
-      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: var(--space-80);
+      margin-bottom: var(--space-48);
+      border-bottom: 2px solid var(--ink);
       padding-bottom: var(--space-24);
-    }
-
-    .section-head h2 {
-      font-size: 2.5rem;
-    }
-
-    .section-head p {
-      max-width: 45ch;
-      color: var(--muted);
-      font-size: 1.0625rem;
-    }
-
-    .kicker {
-      display: block;
-      margin-bottom: var(--space-8);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.72rem;
-      font-family: "Space Grotesk", monospace;
-      font-weight: 500;
     }
 
     .grid-four {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-16);
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-32);
     }
 
     .feature-card,
     .rail-card,
     .deliverable-card {
-      border: 1px solid var(--line);
-      background: white;
-      padding: var(--space-24);
+      border: none;
+      border-top: 1px solid var(--line);
+      background: transparent;
+      padding: var(--space-24) 0;
     }
 
-    .feature-card h3,
-    .rail-card h3,
-    .deliverable-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: var(--space-16);
-      font-style: italic;
-    }
-
-    .feature-card p,
-    .rail-card p,
-    .deliverable-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .feature-card .index {
-      display: block;
-      margin-bottom: var(--space-16);
-      color: var(--accent);
-      font-size: 0.75rem;
+    /* Remove the 'app' look from buttons */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0;
+      margin-right: var(--space-24);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--ink);
+      color: var(--ink);
       font-family: "Space Grotesk", monospace;
-      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: border-color 0.2s;
     }
 
-    .demo-layout {
-      display: grid;
-      grid-template-columns: 320px minmax(0, 1fr);
-      gap: var(--space-32);
-      align-items: start;
+    .button:hover {
+      transform: none;
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .button-primary {
+      background: transparent;
+      color: var(--ink);
+      font-weight: 600;
     }
 
     .scenario-rail,
     .scenario-output,
     .monitor-panel {
-      border: 1px solid var(--line);
-      background: white;
-      padding: var(--space-32);
-    }
-
-    .scenario-rail {
-      position: sticky;
-      top: 20px;
-      background: var(--warm-ash-cream-dark);
-    }
-
-    .scenario-rail h3,
-    .monitor-panel h3 {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-16);
-    }
-
-    .scenario-rail p,
-    .monitor-panel p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: var(--space-24);
-    }
-
-    .scenario-list {
-      display: grid;
-      gap: var(--space-8);
+      border: none;
+      background: transparent;
+      padding: 0;
     }
 
     .scenario-button {
-      width: 100%;
-      text-align: left;
-      padding: var(--space-16);
-      border: 1px solid var(--line);
-      background: white;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .scenario-button:hover,
-    .scenario-button.active {
-      border-color: var(--accent);
-      background: white;
-    }
-
-    .scenario-button.active {
-      border-left: 4px solid var(--accent);
-    }
-
-    .scenario-button .name {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.1rem;
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-    }
-
-    .scenario-button .detail {
-      display: block;
-      color: var(--muted);
-      font-size: 0.85rem;
-      line-height: 1.4;
-    }
-
-    .scenario-header {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-24);
-      align-items: start;
-      padding-bottom: var(--space-24);
+      border: none;
       border-bottom: 1px solid var(--line);
-      margin-bottom: var(--space-32);
+      padding: var(--space-16) 0;
+      background: transparent;
     }
 
-    .scenario-header h3 {
-      font-size: 3rem;
-    }
-
-    .scenario-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 16px;
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid var(--line);
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-16);
-      margin-bottom: var(--space-32);
+    .scenario-button.active {
+      border-left: none;
+      border-bottom: 2px solid var(--accent);
     }
 
     .metric-card {
-      padding: var(--space-24);
-      border: 1px solid var(--line);
-      background: white;
-    }
-
-    .metric-card .label {
-      display: block;
-      color: var(--accent);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-family: "Space Grotesk", monospace;
-      margin-bottom: var(--space-16);
-    }
-
-    .metric-card .value-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-      margin-bottom: var(--space-16);
-    }
-
-    .metric-card .value {
-      font-size: 1.75rem;
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-    }
-
-    .metric-card .context {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .meter {
-      height: 4px;
-      background: var(--paper-mist);
-      overflow: hidden;
-    }
-
-    .meter span {
-      display: block;
-      height: 100%;
-      width: 0;
-      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      background: var(--accent);
+      padding: var(--space-16) 0;
+      border: none;
+      border-top: 1px solid var(--line);
+      background: transparent;
     }
 
     .implication {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: var(--space-24);
-      align-items: center;
+      border: none;
+      border-top: 2px solid var(--ink);
+      background: var(--warm-ash-cream-dark);
       padding: var(--space-32);
-      border: 1px solid var(--line);
-      background: var(--warm-ash-cream-dark);
-    }
-
-    .implication h4 {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-8);
-    }
-
-    .implication p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .implication .badge {
-      padding: 12px var(--space-24);
-      background: var(--ink);
-      color: var(--warm-ash-cream);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.72rem;
-      font-family: "Space Grotesk", monospace;
-      text-align: center;
-    }
-
-    .monitor-layout {
-      display: grid;
-      grid-template-columns: 280px minmax(0, 1fr);
-      gap: var(--space-32);
-      align-items: start;
-    }
-
-    .filter-list {
-      display: grid;
-      gap: var(--space-8);
-      margin-bottom: var(--space-24);
-    }
-
-    .filter-chip {
-      width: 100%;
-      text-align: left;
-      padding: 12px 16px;
-      border: 1px solid var(--line);
-      background: white;
-      color: var(--ink);
-      cursor: pointer;
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: all 0.2s;
-    }
-
-    .filter-chip:hover,
-    .filter-chip.active {
-      border-color: var(--accent);
-      background: var(--warm-ash-cream-dark);
-    }
-
-    .trigger-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-16);
     }
 
     .trigger-card {
-      border: 1px solid var(--line);
-      background: white;
-      padding: var(--space-24);
-      display: grid;
-      gap: var(--space-16);
-    }
-
-    .trigger-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: start;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: var(--space-16);
-    }
-
-    .trigger-card h4 {
-      font-size: 1.35rem;
-    }
-
-    .trigger-card .category {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.65rem;
-      font-family: "Space Grotesk", monospace;
-      font-weight: 600;
-    }
-
-    .trigger-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-8);
+      border: none;
+      border-top: 1px solid var(--line);
+      background: transparent;
+      padding: var(--space-24) 0;
     }
 
     .trigger-meta div {
-      padding: var(--space-16);
-      background: var(--warm-ash-cream-dark);
-      border: 1px solid var(--line);
+      background: transparent;
+      border: none;
+      border-left: 1px solid var(--line);
+      padding: 0 0 0 var(--space-16);
     }
-
-    .trigger-meta dt,
-    .trigger-actions dt,
-    .trigger-footer dt {
-      margin-bottom: 4px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.6rem;
-      font-family: "Space Grotesk", monospace;
-      font-weight: 600;
-    }
-
-    .trigger-meta dd,
-    .trigger-actions dd,
-    .trigger-footer dd {
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-
-    .trigger-actions,
-    .trigger-footer {
-      display: grid;
-      gap: var(--space-8);
-    }
-
-    .trigger-action {
-      padding: var(--space-16);
-      border: 1px solid var(--line);
-    }
-
-    .trigger-action.positive {
-      border-left: 3px solid #7ea099;
-    }
-
-    .trigger-action.negative {
-      border-left: 3px solid #b16d63;
-    }
-
-    .rails-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-16);
-    }
-
-    .rail-card .tag {
-      display: inline-block;
-      margin-bottom: var(--space-16);
-      color: var(--accent);
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .deliverables-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-16);
-    }
-
-    .deliverable-card {
-      display: grid;
-      gap: var(--space-16);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .deliverable-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-
-    .deliverable-card .topline {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      color: var(--accent);
-      font-family: "Space Grotesk", monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .deliverable-card .arrow {
-      font-size: 1rem;
-    }
-
-    .site-footer {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--space-32);
-      align-items: center;
-      flex-wrap: wrap;
-      padding: var(--space-48) 0 var(--space-24);
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-family: "Space Grotesk", monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .site-footer a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 1040px) {
-      .hero-grid,
-      .demo-layout,
-      .monitor-layout,
-      .grid-four,
-      .rails-grid,
-      .deliverables-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .scenario-rail {
-        position: static;
-      }
-    }
-
-    @media (max-width: 760px) {
-      body {
-        padding: var(--space-16);
-      }
-
-      .hero,
-      .section {
-        padding: var(--space-24);
-      }
-
-      .hero-meta,
-      .metrics-grid,
-      .trigger-grid,
-      .deliverables-grid,
-      .rails-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .scenario-header,
-      .implication,
-      .site-footer {
-        grid-template-columns: 1fr;
-        display: grid;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page-shell">
-    <header class="hero surface">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow mono">
-            <span class="dot"></span>
-            Analyst Portfolio Project
-          </div>
-          <h1>Snowflake underwriting you can review in three minutes.</h1>
-          <p>
-            I built this as a single-name coverage exercise: variant view, three-case framing,
-            KPI monitoring, and source logging. The point is not a flashy dashboard. It is to
-            show how the thesis would be defended, updated, and pressure-tested after each print.
-          </p>
-          <p>
-            Everything on this page points back to the memo, tracker, model inputs, and source
-            log in the repo. Illustrative values are labeled, and the workflow stays filing-first.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#current-read">Start With Thesis</a>
-            <a class="button button-secondary" href="#interactive-demo">Open Scenario Walkthrough</a>
-            <a class="button button-secondary" href="#deliverables">View Deliverables</a>
-            <a
-              class="button button-secondary"
-              href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-"
-              target="_blank"
-              rel="noreferrer"
-            >Open Repository</a>
-          </div>
-        </div>
-
-        <aside class="hero-panel">
-          <span class="panel-tag">Read This First</span>
-          <h2>What a reviewer can verify quickly</h2>
-          <ul>
-            <li>
-              <span>01</span>
-              <div><strong>Variant view.</strong> The name is framed against a specific consensus concern, not summarized like a company profile.</div>
-            </li>
-            <li>
-              <span>02</span>
-              <div><strong>Decision rules.</strong> Bull, base, and bear assumptions are explicit and tied to quarterly trigger thresholds.</div>
-            </li>
-            <li>
-              <span>03</span>
-              <div><strong>Evidence trail.</strong> The memo, source log, and monitoring table show where the work came from and how it gets updated.</div>
-            </li>
-          </ul>
-          <div class="hero-meta">
-            <div class="meta-card">
-              <span class="label">Source Log</span>
-              <span class="value">15 items</span>
-            </div>
-            <div class="meta-card">
-              <span class="label">KPI History</span>
-              <span class="value">12 quarters</span>
-            </div>
-            <div class="meta-card">
-              <span class="label">Scenario Set</span>
-              <span class="value">Bear / Base / Bull</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <section class="section surface" id="current-read">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Current Read</span>
-          <h2>Constructive, but only if the quality of growth holds.</h2>
-        </div>
-        <p>
-          My working view is constructive, but conviction still depends on retention stability,
-          clean cash conversion, and proof that AI features become paid adoption rather than
-          usage growth without monetization.
-        </p>
-      </div>
-      <div class="grid-four">
-        <article class="feature-card">
-          <span class="index">01</span>
-          <h3>Working view</h3>
-          <p>Snowflake can be misread as a maturing warehouse story even while product-surface expansion keeps room for steadier long-run earnings power.</p>
-        </article>
-        <article class="feature-card">
-          <span class="index">02</span>
-          <h3>What breaks it</h3>
-          <p>Sustained NRR pressure, heavier discounting, or weaker FCF conversion would undermine the quality-of-growth argument quickly.</p>
-        </article>
-        <article class="feature-card">
-          <span class="index">03</span>
-          <h3>What upgrades it</h3>
-          <p>Two consecutive quarters with stable retention, cleaner conversion, and direct paid AI evidence would justify higher conviction.</p>
-        </article>
-        <article class="feature-card">
-          <span class="index">04</span>
-          <h3>Latest model point</h3>
-          <p>FY26E-Q4 in the workbook lands at $1,170m revenue, 115% NRR, and $282m FCF, which is useful for anchoring the base-case debate.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section surface" id="interactive-demo">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Interactive Walkthrough</span>
-          <h2>Switch the case and see what actually changes.</h2>
-        </div>
-        <p>
-          The scenario ranges below mirror the repo's model inputs. The point is to show how the
-          underwriting changes when retention, margins, and discount-rate assumptions move.
-        </p>
-      </div>
-
-      <div class="demo-layout">
-        <aside class="scenario-rail">
-          <h3>Scenario selector</h3>
-          <p>Use this to move the debate from narrative into assumptions: growth, retention, cash conversion, and valuation discipline.</p>
-          <div class="scenario-list" role="tablist" aria-label="Scenario selector">
-            <button class="scenario-button active" data-scenario="Base" role="tab" aria-selected="true">
-              <span class="name">Base case</span>
-              <span class="detail">Moderating growth, steady cash conversion, disciplined but not heroic execution.</span>
-            </button>
-            <button class="scenario-button" data-scenario="Bull" role="tab" aria-selected="false">
-              <span class="name">Bull case</span>
-              <span class="detail">AI monetization lands, NRR holds, and margins expand with better operating leverage.</span>
-            </button>
-            <button class="scenario-button" data-scenario="Bear" role="tab" aria-selected="false">
-              <span class="name">Bear case</span>
-              <span class="detail">Retention softens, pricing pressure rises, and valuation needs a harsher discount.</span>
-            </button>
-          </div>
-        </aside>
-
-        <div class="scenario-output" aria-live="polite">
-          <div class="scenario-header">
-            <div>
-              <span class="kicker" id="scenario-kicker">Current view</span>
-              <h3 id="scenario-title">Base case</h3>
-              <p id="scenario-summary"></p>
-            </div>
-            <div class="scenario-pill mono" id="scenario-pill">Balanced underwriting</div>
-          </div>
-
-          <div class="metrics-grid" id="metrics-grid"></div>
-
-          <div class="implication">
-            <div>
-              <h4 id="scenario-implication-title">Why this case matters</h4>
-              <p id="scenario-implication-copy"></p>
-            </div>
-            <div class="badge" id="scenario-badge">Base path</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section surface">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Post-Earnings Monitor</span>
-          <h2>Show the decision rules, not just the idea.</h2>
-        </div>
-        <p>
-          These trigger cards come from the monitoring table in the repo. They make the update
-          process explicit: what would increase conviction, what would cut it, and which source
-          should answer the question.
-        </p>
-      </div>
-
-      <div class="monitor-layout">
-        <aside class="monitor-panel">
-          <h3>Filter the trigger set</h3>
-          <p>Each category isolates a different failure mode or source of upside. The current values shown here are the latest tracker values in the repo.</p>
-          <div class="filter-list" role="tablist" aria-label="Trigger categories">
-            <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">All triggers</button>
-            <button class="filter-chip" data-filter="growth" role="tab" aria-selected="false">Growth and retention</button>
-            <button class="filter-chip" data-filter="margins" role="tab" aria-selected="false">Margins and cash</button>
-            <button class="filter-chip" data-filter="platform" role="tab" aria-selected="false">AI, pricing, and customers</button>
-          </div>
-          <p class="mono">Quarterly update rule: refresh source docs, reconcile assumptions, then re-score conviction.</p>
-        </aside>
-
-        <div class="trigger-grid" id="trigger-grid"></div>
-      </div>
-    </section>
-
-    <section class="section surface">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Interview Path</span>
-          <h2>How I would walk this live.</h2>
-        </div>
-        <p>
-          The conversation sequence matters. I would start with the variant view, move to the
-          three-case framework, and finish with the KPI triggers that would change my mind.
-        </p>
-      </div>
-
-      <div class="rails-grid">
-        <article class="rail-card">
-          <span class="tag">30 seconds</span>
-          <h3>State the variant clearly</h3>
-          <p>I treated Snowflake as a live single-name coverage exercise: built a three-case model, set KPI triggers, and wrote down what would confirm or break the thesis.</p>
-        </article>
-        <article class="rail-card">
-          <span class="tag">Pressure test</span>
-          <h3>Invite the obvious objections</h3>
-          <p>Why not just own the hyperscalers, and what breaks the thesis first? The answer runs through bundling pressure, sustained NRR weakness, and weaker FCF conversion.</p>
-        </article>
-        <article class="rail-card">
-          <span class="tag">Next call</span>
-          <h3>Show what I would ask management</h3>
-          <p>Where is paid AI workload contribution showing up in expansion, how much discounting is needed to defend core workloads, and which expense lines should show leverage first?</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section surface" id="deliverables">
-      <div class="section-head">
-        <div>
-          <span class="kicker">Open The Work</span>
-          <h2>Every supporting artifact is one click away.</h2>
-        </div>
-        <p>
-          These links use GitHub paths so they work from the live site. That avoids the broken-path problem
-          you get when a GitHub Pages site tries to link outside the published `docs` root.
-        </p>
-      </div>
-
-      <div class="deliverables-grid">
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Investment_Memo.md" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Brief / MD</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Investment memo</h3>
-          <p>Full thesis write-up, risks, and why the name can be mispriced.</p>
-        </a>
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Tear_Sheet.md" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Brief / MD</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Tear sheet</h3>
-          <p>Condensed view for quick review before or during an interview discussion.</p>
-        </a>
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Catalyst_Tracker.md" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Brief / MD</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Catalyst and risk tracker</h3>
-          <p>Event framework, scoring rubric, and decision rules for updating conviction.</p>
-        </a>
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Interview_Talk_Track.md" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Brief / MD</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Interview talk track</h3>
-          <p>Structured prompts for explaining the thesis and pressure-testing assumptions verbally.</p>
-        </a>
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/model/scenario_assumptions.csv" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Model / CSV</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Scenario inputs</h3>
-          <p>Bear, base, and bull assumptions used to drive the interactive walkthrough above.</p>
-        </a>
-        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/model/monitoring_triggers.csv" target="_blank" rel="noreferrer">
-          <div class="topline">
-            <span>Model / CSV</span>
-            <span class="arrow">-></span>
-          </div>
-          <h3>Monitoring triggers</h3>
-          <p>Thresholds, actions, cadence, and source references for each KPI under watch.</p>
-        </a>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div style="display: flex; gap: var(--space-24); align-items: center;">
-        <span>Equity Research Portfolio</span>
-        <div style="font-family: 'Space Grotesk', monospace; font-size: 0.65rem; opacity: 0.6; letter-spacing: 0.05em; text-transform: uppercase;">
-          Design System: <span style="color: var(--editorial-magenta); font-weight: 600;">Impeccable</span>
-        </div>
-      </div>
-      <a href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-" target="_blank" rel="noreferrer">github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-</a>
-    </footer>
-  </div>
-
-  <script>
-    const scenarios = {
-      Bear: {
-        name: "Bear case",
-        summary: "Assumes retention softens, bundling pressure increases, and Snowflake needs to absorb a tougher valuation framework while growth decelerates.",
-        pill: "Downside discipline",
-        color: "#b16d63",
-        implication: "This is the explicit failure mode. If retention weakens and pricing pressure rises, the thesis needs a lower-quality growth and valuation framework.",
-        badge: "Failure mode",
-        metrics: [
-          { label: "3Y revenue CAGR", value: "15%", numeric: 15, min: 15, max: 28, context: "Scenario assumption" },
-          { label: "NRR assumption", value: "108%", numeric: 108, min: 108, max: 120, context: "Retention pressure" },
-          { label: "Gross margin target", value: "72%", numeric: 72, min: 72, max: 76, context: "Pricing pressure reflected" },
-          { label: "CFO margin target", value: "22%", numeric: 22, min: 22, max: 33, context: "Lower operating leverage" },
-          { label: "WACC", value: "10.0%", numeric: 10, min: 8.5, max: 10, context: "Higher required return" },
-          { label: "Terminal growth", value: "2.5%", numeric: 2.5, min: 2.5, max: 3.5, context: "More conservative exit" }
-        ]
-      },
-      Base: {
-        name: "Base case",
-        summary: "Assumes growth moderates but remains healthy, retention stays serviceable, and cash conversion improves without needing an aggressive AI ramp.",
-        pill: "Balanced underwriting",
-        color: "#7ea099",
-        implication: "This is the central underwriting path if growth normalizes cleanly, retention stabilizes, and cash conversion keeps improving without heroic assumptions.",
-        badge: "Base path",
-        metrics: [
-          { label: "3Y revenue CAGR", value: "22%", numeric: 22, min: 15, max: 28, context: "Scenario assumption" },
-          { label: "NRR assumption", value: "114%", numeric: 114, min: 108, max: 120, context: "Stabilizing expansion" },
-          { label: "Gross margin target", value: "74%", numeric: 74, min: 72, max: 76, context: "In line with a steady path" },
-          { label: "CFO margin target", value: "28%", numeric: 28, min: 22, max: 33, context: "Improving conversion" },
-          { label: "WACC", value: "9.0%", numeric: 9, min: 8.5, max: 10, context: "Middle valuation stance" },
-          { label: "Terminal growth", value: "3.0%", numeric: 3, min: 2.5, max: 3.5, context: "Moderate long-run view" }
-        ]
-      },
-      Bull: {
-        name: "Bull case",
-        summary: "Assumes AI workload monetization scales, customer expansion stays strong, and margin structure improves as newer products deepen wallet share.",
-        pill: "Upside capture",
-        color: "#689d71",
-        implication: "This is only credible if AI monetization and wallet-share expansion show up in the numbers. The upside case still has to pass through retention, margin, and discount-rate assumptions.",
-        badge: "Upside path",
-        metrics: [
-          { label: "3Y revenue CAGR", value: "28%", numeric: 28, min: 15, max: 28, context: "Scenario assumption" },
-          { label: "NRR assumption", value: "120%", numeric: 120, min: 108, max: 120, context: "Higher expansion quality" },
-          { label: "Gross margin target", value: "76%", numeric: 76, min: 72, max: 76, context: "Stronger mix and pricing" },
-          { label: "CFO margin target", value: "33%", numeric: 33, min: 22, max: 33, context: "Better operating leverage" },
-          { label: "WACC", value: "8.5%", numeric: 8.5, min: 8.5, max: 10, context: "Lower required return" },
-          { label: "Terminal growth", value: "3.5%", numeric: 3.5, min: 2.5, max: 3.5, context: "Higher durable-growth view" }
-        ]
-      }
-    };
-
-    const triggers = [
-      {
-        key: "product_revenue_growth_%",
-        title: "Product revenue growth",
-        currentValue: "21.4",
-        positiveTrigger: ">=22 for 2 quarters",
-        negativeTrigger: "<18 for 2 quarters",
-        actionIfPositive: "Increase bull-case weight by 5 pts",
-        actionIfNegative: "Increase bear-case weight by 10 pts",
-        cadence: "Quarterly",
-        primarySource: "SNOW quarterly results",
-        category: "growth"
-      },
-      {
-        key: "nrr_%",
-        title: "Net revenue retention",
-        currentValue: "115",
-        positiveTrigger: ">=118 with stable churn",
-        negativeTrigger: "<=112 for 2 quarters",
-        actionIfPositive: "Raise conviction rating by one notch",
-        actionIfNegative: "Cut conviction rating by one notch",
-        cadence: "Quarterly",
-        primarySource: "SNOW earnings materials",
-        category: "growth"
-      },
-      {
-        key: "gross_margin_%",
-        title: "Gross margin",
-        currentValue: "74.0",
-        positiveTrigger: ">=75 with no growth slowdown",
-        negativeTrigger: "<=73 with weak growth",
-        actionIfPositive: "Lower reinvestment risk premium",
-        actionIfNegative: "Increase execution risk premium",
-        cadence: "Quarterly",
-        primarySource: "SNOW filings + earnings deck",
-        category: "margins"
-      },
-      {
-        key: "cfo_margin_%",
-        title: "CFO margin",
-        currentValue: "27.7",
-        positiveTrigger: ">=29 with disciplined opex",
-        negativeTrigger: "<=25 despite opex controls",
-        actionIfPositive: "Improve cash conversion assumptions",
-        actionIfNegative: "Reduce cash conversion assumptions",
-        cadence: "Quarterly",
-        primarySource: "SNOW cash flow disclosures",
-        category: "margins"
-      },
-      {
-        key: "fcf_margin_%",
-        title: "FCF margin",
-        currentValue: "24.1",
-        positiveTrigger: ">=26 while maintaining growth",
-        negativeTrigger: "<21 with growth deceleration",
-        actionIfPositive: "Narrow valuation discount range",
-        actionIfNegative: "Widen valuation discount range",
-        cadence: "Quarterly",
-        primarySource: "SNOW filings + release",
-        category: "margins"
-      },
-      {
-        key: "large_customer_momentum",
-        title: "Large-customer momentum",
-        currentValue: "Stable",
-        positiveTrigger: "Net adds plus expansion commentary",
-        negativeTrigger: "Flat adds plus lower spend depth",
-        actionIfPositive: "Maintain base growth trajectory",
-        actionIfNegative: "Trim medium-term growth trajectory",
-        cadence: "Quarterly",
-        primarySource: "Earnings call transcript",
-        category: "platform"
-      },
-      {
-        key: "ai_attach_signal",
-        title: "AI attach signal",
-        currentValue: "Early monetization",
-        positiveTrigger: "Explicit paid adoption evidence",
-        negativeTrigger: "Usage growth without monetization",
-        actionIfPositive: "Increase AI monetization contribution",
-        actionIfNegative: "Reduce AI monetization contribution",
-        cadence: "Quarterly",
-        primarySource: "Product updates + management commentary",
-        category: "platform"
-      },
-      {
-        key: "pricing_pressure",
-        title: "Pricing pressure",
-        currentValue: "Moderate",
-        positiveTrigger: "Differentiation holds in deal narrative",
-        negativeTrigger: "Frequent discounting to defend workloads",
-        actionIfPositive: "Maintain gross margin path",
-        actionIfNegative: "Haircut gross margin path",
-        cadence: "Quarterly",
-        primarySource: "Competitor pricing + call commentary",
-        category: "platform"
-      }
-    ];
-
-    const scenarioButtons = Array.from(document.querySelectorAll(".scenario-button"));
-    const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
-    const metricsGrid = document.getElementById("metrics-grid");
-    const triggerGrid = document.getElementById("trigger-grid");
-
-    const scenarioTitle = document.getElementById("scenario-title");
-    const scenarioSummary = document.getElementById("scenario-summary");
-    const scenarioPill = document.getElementById("scenario-pill");
-    const scenarioImplicationCopy = document.getElementById("scenario-implication-copy");
-    const scenarioBadge = document.getElementById("scenario-badge");
-
-    function toPercentWidth(value, min, max) {
-      if (max === min) return "100%";
-      return ((value - min) / (max - min) * 100).toFixed(0) + "%";
-    }
-
-    function renderScenario(name) {
-      const scenario = scenarios[name];
-      scenarioTitle.textContent = scenario.name;
-      scenarioSummary.textContent = scenario.summary;
-      scenarioPill.textContent = scenario.pill;
-      scenarioPill.style.color = scenario.color;
-      scenarioPill.style.borderColor = scenario.color;
-      scenarioPill.style.background = "white";
-      scenarioImplicationCopy.textContent = scenario.implication;
-      scenarioBadge.textContent = scenario.badge;
-
-      metricsGrid.innerHTML = scenario.metrics.map((metric) => {
-        const width = toPercentWidth(metric.numeric, metric.min, metric.max);
-        return `
-          <article class="metric-card">
-            <span class="label">${metric.label}</span>
-            <div class="value-row">
-              <span class="value">${metric.value}</span>
-              <span class="context">${metric.context}</span>
-            </div>
-            <div class="meter" aria-hidden="true">
-              <span style="width:${width}; background: ${scenario.color};"></span>
-            </div>
-          </article>
-        `;
-      }).join("");
-
-      scenarioButtons.forEach((button) => {
-        const isActive = button.dataset.scenario === name;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-    }
-
-    function triggerCategoryLabel(category) {
-      if (category === "growth") return "Growth";
-      if (category === "margins") return "Margins";
-      return "Platform";
-    }
-
-    function renderTriggers(filter) {
-      const filtered = filter === "all"
-        ? triggers
-        : triggers.filter((trigger) => trigger.category === filter);
-
-      triggerGrid.innerHTML = filtered.map((trigger) => `
-        <article class="trigger-card">
-          <div class="trigger-top">
-            <h4>${trigger.title}</h4>
-            <span class="category">${triggerCategoryLabel(trigger.category)}</span>
-          </div>
-          <dl class="trigger-meta">
-            <div>
-              <dt>Current tracker value</dt>
-              <dd>${trigger.currentValue}</dd>
-            </div>
-            <div>
-              <dt>Update cadence</dt>
-              <dd>${trigger.cadence}</dd>
-            </div>
-          </dl>
-          <div class="trigger-actions">
-            <div class="trigger-action positive">
-              <dt>Positive trigger</dt>
-              <dd>${trigger.positiveTrigger}</dd>
-            </div>
-            <div class="trigger-action negative">
-              <dt>Negative trigger</dt>
-              <dd>${trigger.negativeTrigger}</dd>
-            </div>
-          </div>
-          <div class="trigger-footer">
-            <div class="trigger-action positive">
-              <dt>Action if positive</dt>
-              <dd>${trigger.actionIfPositive}</dd>
-            </div>
-            <div class="trigger-action negative">
-              <dt>Action if negative</dt>
-              <dd>${trigger.actionIfNegative}</dd>
-            </div>
-            <div class="trigger-action">
-              <dt>Primary source</dt>
-              <dd>${trigger.primarySource}</dd>
-            </div>
-          </div>
-        </article>
-      `).join("");
-
-      filterButtons.forEach((button) => {
-        const isActive = button.dataset.filter === filter;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-    }
-
-    scenarioButtons.forEach((button) => {
-      button.addEventListener("click", () => renderScenario(button.dataset.scenario));
-    });
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => renderTriggers(button.dataset.filter));
-    });
-
-    renderScenario("Base");
-    renderTriggers("all");
-  </script>
-</body>
-</html>
