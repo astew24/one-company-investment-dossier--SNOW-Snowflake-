@@ -36,78 +36,155 @@ st.set_page_config(
 def inject_styles() -> None:
     st.markdown(
         """
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&family=Instrument+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
         <style>
-          .stApp {
-            background:
-              radial-gradient(circle at top left, rgba(17, 75, 95, 0.08), transparent 28rem),
-              linear-gradient(180deg, #f8f3ea 0%, #f3ecdf 100%);
+          :root {
+            /* Impeccable Color Tokens */
+            --warm-ash-cream: oklch(96% 0.005 350);
+            --warm-ash-cream-dark: oklch(92% 0.005 350);
+            --deep-graphite: oklch(10% 0 0);
+            --soft-charcoal: oklch(25% 0 0);
+            --editorial-magenta: oklch(60% 0.25 350);
+            --paper-mist: oklch(85% 0.005 350);
+            
+            /* Magazine Spacing Scale */
+            --space-8: 8px;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-48: 48px;
+            --space-80: 80px;
+            --space-120: 120px;
           }
+
+          /* Global Sanctuary Reset */
+          .stApp {
+            background-color: var(--warm-ash-cream);
+            color: var(--deep-graphite);
+            font-family: 'Instrument Sans', system-ui, sans-serif;
+            line-height: 1.6;
+          }
+
           .main .block-container {
             max-width: 1180px;
-            padding-top: 2rem;
-            padding-bottom: 4rem;
+            padding-top: var(--space-48);
+            padding-bottom: var(--space-80);
           }
+
+          /* Typography */
+          h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--deep-graphite);
+            margin-bottom: var(--space-16);
+            line-height: 1.1;
+          }
+
+          h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+          h2 { font-size: 2.5rem; border-bottom: 1px solid var(--paper-mist); padding-bottom: var(--space-8); margin-top: var(--space-48); }
+          h3 { font-size: 1.75rem; font-style: normal; font-weight: 600; font-family: 'Instrument Sans', sans-serif; }
+
+          p, li {
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            max-width: 75ch;
+            margin-bottom: var(--space-16);
+          }
+
+          /* Impeccable Components */
           div[data-testid="stMetric"] {
-            background: rgba(255, 252, 247, 0.85);
-            border: 1px solid rgba(30, 36, 48, 0.10);
-            border-radius: 18px;
-            padding: 0.85rem 1rem;
+            background: var(--warm-ash-cream-dark);
+            border: 1px solid var(--paper-mist);
+            border-radius: 0; /* Sharp signatures */
+            padding: var(--space-16);
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
           }
+          div[data-testid="stMetric"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          }
+
           .section-card {
-            background: rgba(255, 252, 247, 0.78);
-            border: 1px solid rgba(30, 36, 48, 0.10);
-            border-radius: 20px;
-            padding: 1.15rem 1.2rem;
+            background: white;
+            border: 1px solid var(--paper-mist);
+            border-radius: 0;
+            padding: var(--space-32);
+            margin-bottom: var(--space-24);
           }
-          .section-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.55rem;
-          }
-          .section-card p {
-            margin-bottom: 0.7rem;
-          }
-          .section-card ul {
-            margin: 0;
-            padding-left: 1.2rem;
-          }
+
           .section-kicker {
+            font-family: 'Space Grotesk', monospace;
             display: inline-block;
-            margin-bottom: 0.55rem;
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
+            margin-bottom: var(--space-8);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #114b5f;
-            font-weight: 700;
+            color: var(--editorial-magenta);
+            font-weight: 500;
           }
+
           .thesis-card {
-            background: rgba(255, 252, 247, 0.92);
-            border: 1px solid rgba(30, 36, 48, 0.10);
-            border-radius: 24px;
-            padding: 1.4rem 1.5rem;
-            margin-bottom: 1rem;
+            background: transparent;
+            border-bottom: 2px solid var(--deep-graphite);
+            padding: 0 0 var(--space-32) 0;
+            margin-bottom: var(--space-48);
           }
+
           .thesis-card h1 {
-            margin: 0;
-            font-size: 3rem;
-            line-height: 0.95;
+            margin-top: var(--space-16);
+            margin-bottom: var(--space-8);
+            letter-spacing: -0.02em;
           }
+
           .thesis-card p {
-            font-size: 1.05rem;
-            line-height: 1.65;
-            margin: 0.8rem 0 0 0;
+            font-size: 1.25rem;
+            color: var(--soft-charcoal);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
           }
+
           .note-card {
-            background: rgba(17, 75, 95, 0.06);
-            border: 1px solid rgba(17, 75, 95, 0.12);
-            border-radius: 18px;
-            padding: 0.9rem 1rem;
+            background: white;
+            border-left: 4px solid var(--editorial-magenta);
+            padding: var(--space-24) var(--space-32);
+            margin-bottom: var(--space-32);
           }
+
           .note-card p {
             margin: 0;
-            line-height: 1.55;
+            font-size: 1.125rem;
           }
+
+          /* Sidebar Customization */
+          [data-testid="stSidebar"] {
+            background-color: var(--warm-ash-cream-dark);
+            border-right: 1px solid var(--paper-mist);
+          }
+
           [data-testid="stSidebar"] .stMarkdown a {
+            color: var(--deep-graphite);
             text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+          }
+
+          [data-testid="stSidebar"] .stMarkdown a:hover {
+            border-bottom-color: var(--editorial-magenta);
+          }
+
+          /* Plotly Chart refinement to match */
+          .js-plotly-plot .plotly .main-svg {
+            background: transparent !important;
+          }
+
+          /* Streamlit Divider */
+          hr {
+            border: 0;
+            border-top: 1px solid var(--paper-mist);
+            margin: var(--space-48) 0;
           }
         </style>
         """,
@@ -342,6 +419,14 @@ def render_sidebar() -> None:
     st.sidebar.markdown(f"- [Model Notes]({build_source_link('model/README.md')})")
     st.sidebar.markdown(f"- [Sources Log]({build_source_link('data/sources_log.csv')})")
     st.sidebar.divider()
+    st.sidebar.markdown(
+        """
+        <div style="font-family: 'Space Grotesk', monospace; font-size: 0.7rem; opacity: 0.6; letter-spacing: 0.05em; text-transform: uppercase;">
+          Design System: <span style="color: var(--editorial-magenta); font-weight: 600;">Impeccable</span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.sidebar.markdown(f"Live demo: [GitHub Pages]({LIVE_DEMO_URL})")
     st.sidebar.markdown(f"Repository: [GitHub]({REPO_URL})")
 
@@ -474,7 +559,8 @@ def render_valuation(
         )
         return
 
-    colors = {"Bear": "#9a3d2f", "Base": "#2e7d6b", "Bull": "#1d6f42"}
+    # Impeccable-inspired muted palette (using hex approximations for Plotly)
+    colors = {"Bear": "#b16d63", "Base": "#7ea099", "Bull": "#689d71"}
     ordered = ["Bear", "Base", "Bull"]
     fig = go.Figure()
     fig.add_bar(
@@ -484,22 +570,26 @@ def render_valuation(
         text=[format_currency(scenario_prices[scenario]) for scenario in ordered],
         textposition="outside",
         hovertemplate="%{x}: %{y:$,.2f}<extra></extra>",
+        width=0.4,
     )
     fig.add_hline(
         y=current_price,
         line_dash="dash",
-        line_color="#114b5f",
+        line_color="#1a1a1a",
         annotation_text=f"Current price {format_currency(current_price)}",
         annotation_position="top left",
     )
     fig.update_layout(
         height=430,
-        margin=dict(l=10, r=10, t=30, b=10),
+        margin=dict(l=10, r=10, t=40, b=10),
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.65)",
+        plot_bgcolor="rgba(0,0,0,0)",
         yaxis_title="Price",
-        xaxis_title="Scenario",
+        xaxis_title="",
+        font=dict(family="Instrument Sans, sans-serif", size=12, color="#1a1a1a"),
     )
+    fig.update_yaxes(showgrid=True, gridcolor="#e6e6e6", zeroline=False)
+    fig.update_xaxes(zeroline=False)
     st.plotly_chart(fig, use_container_width=True)
 
     if scenario_price_source == "yfinance":
@@ -517,33 +607,42 @@ def render_kpi_history(kpi_df: pd.DataFrame) -> None:
     chart_df["is_estimate"] = chart_df["quarter"].astype(str).str.contains("E", regex=False)
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    # Primary Data: Editorial Magenta approximation
     fig.add_trace(
         go.Scatter(
             x=chart_df["quarter"],
             y=chart_df["revenue"],
             name="Revenue ($m)",
             mode="lines+markers",
-            line=dict(color="#114b5f", width=3),
+            line=dict(color="#e61e6e", width=3),
+            marker=dict(size=8, symbol="square"),
         ),
         secondary_y=False,
     )
+    
+    # Secondary Data: Muted Graphite
     fig.add_trace(
         go.Scatter(
             x=chart_df["quarter"],
             y=chart_df["fcf"],
             name="FCF ($m)",
             mode="lines+markers",
-            line=dict(color="#ab7a16", width=3),
+            line=dict(color="#666666", width=2),
+            marker=dict(size=6),
         ),
         secondary_y=False,
     )
+    
+    # Tertiary Data: Soft Charcoal
     fig.add_trace(
         go.Scatter(
             x=chart_df["quarter"],
             y=chart_df["nrr_%"],
             name="NRR (%)",
             mode="lines+markers",
-            line=dict(color="#7a3342", width=3),
+            line=dict(color="#8c8c8c", width=2, dash="dot"),
+            marker=dict(size=6),
         ),
         secondary_y=True,
     )
@@ -555,21 +654,23 @@ def render_kpi_history(kpi_df: pd.DataFrame) -> None:
         fig.add_vrect(
             x0=first_estimate,
             x1=last_estimate,
-            fillcolor="rgba(17, 75, 95, 0.06)",
+            fillcolor="#f2d7e1",
+            opacity=0.3,
             line_width=0,
-            annotation_text="Estimated quarters",
+            annotation_text="Estimated",
             annotation_position="top left",
         )
 
     fig.update_layout(
         height=470,
-        margin=dict(l=10, r=10, t=30, b=10),
+        margin=dict(l=10, r=10, t=50, b=10),
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.65)",
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+        plot_bgcolor="rgba(0,0,0,0)",
+        legend=dict(orientation="h", yanchor="bottom", y=1.05, xanchor="left", x=0),
+        font=dict(family="Instrument Sans, sans-serif", size=12, color="#1a1a1a"),
     )
-    fig.update_yaxes(title_text="Revenue / FCF ($m)", secondary_y=False)
-    fig.update_yaxes(title_text="NRR (%)", secondary_y=True)
+    fig.update_yaxes(title_text="Revenue / FCF ($m)", secondary_y=False, showgrid=True, gridcolor="#e6e6e6")
+    fig.update_yaxes(title_text="NRR (%)", secondary_y=True, showgrid=False)
     st.plotly_chart(fig, use_container_width=True)
     st.caption("Source: model/Model.xlsx, sheet KPI_History.")
 
