@@ -9,21 +9,14 @@
     content="Live portfolio presentation of a Snowflake single-name equity research workflow, including thesis framing, scenario analysis, monitoring triggers, and supporting artifacts."
   >
   <meta name="theme-color" content="oklch(60% 0.25 350)">
-  <meta property="og:title" content="Snowflake Research Dossier">
-  <meta
-    property="og:description"
-    content="Single-name equity research walkthrough covering thesis, scenario framing, KPI monitoring, and the underlying memo, tracker, and model files."
-  >
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://astew24.github.io/one-company-investment-dossier--SNOW-Snowflake-/">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&family=Instrument+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   <style>
     :root {
-      /* Impeccable Color Tokens */
       --warm-ash-cream: oklch(96% 0.005 350);
       --warm-ash-cream-dark: oklch(92% 0.005 350);
       --deep-graphite: oklch(10% 0 0);
@@ -31,69 +24,45 @@
       --editorial-magenta: oklch(60% 0.25 350);
       --paper-mist: oklch(85% 0.005 350);
       
-      /* Magazine Spacing Scale */
       --space-8: 8px;
       --space-16: 16px;
       --space-24: 24px;
       --space-32: 32px;
       --space-48: 48px;
       --space-80: 80px;
-      --space-120: 120px;
 
-      /* Semantic mappings */
       --ink: var(--deep-graphite);
       --muted: var(--soft-charcoal);
       --accent: var(--editorial-magenta);
       --line: var(--paper-mist);
-      --radius: 0; /* Sharp signatures rule */
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       min-height: 100vh;
       background-color: var(--warm-ash-cream);
       color: var(--ink);
-      font-family: "Instrument Sans", system-ui, sans-serif;
+      font-family: "Instrument Sans", sans-serif;
       line-height: 1.6;
       padding: var(--space-24);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .page-shell { max-width: 1180px; margin: 0 auto; }
+    .mono { font-family: "Space Grotesk", monospace; }
+
+    h1, h2, h3, h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.1;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page-shell {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .mono {
-      font-family: "Space Grotesk", monospace;
-    }
-
-    .surface {
-      background: transparent;
-      border: none;
-    }
+    h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); margin-bottom: var(--space-24); }
+    h2 { font-size: 2.5rem; margin-bottom: var(--space-16); }
+    h3 { font-size: 1.75rem; font-style: normal; font-weight: 600; font-family: "Instrument Sans", sans-serif; }
 
     .hero {
-      position: relative;
-      overflow: hidden;
       padding: var(--space-48) 0;
       margin-bottom: var(--space-48);
       border-bottom: 2px solid var(--ink);
@@ -106,62 +75,30 @@
       align-items: start;
     }
 
-    /* Remove the 'boxy' look from the panel */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--space-16);
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: "Space Grotesk", monospace;
+    }
+
+    .hero-copy p { max-width: 65ch; margin-bottom: var(--space-24); font-size: 1.125rem; color: var(--muted); }
+
     .hero-panel {
-      position: relative;
-      background: transparent;
-      border: none;
       border-left: 1px solid var(--line);
-      padding: 0 0 0 var(--space-32);
+      padding-left: var(--space-32);
       display: grid;
       gap: var(--space-24);
     }
 
-    .meta-card {
-      padding: var(--space-16) 0;
-      border: none;
-      border-top: 1px solid var(--line);
-      background: transparent;
-    }
-
-    .section {
-      margin-bottom: var(--space-80);
-      padding: 0;
-      background: transparent;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-      gap: var(--space-80);
-      margin-bottom: var(--space-48);
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: var(--space-24);
-    }
-
-    .grid-four {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-32);
-    }
-
-    .feature-card,
-    .rail-card,
-    .deliverable-card {
-      border: none;
-      border-top: 1px solid var(--line);
-      background: transparent;
-      padding: var(--space-24) 0;
-    }
-
-    /* Remove the 'app' look from buttons */
     .button {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0;
       margin-right: var(--space-24);
       background: transparent;
       border: none;
@@ -171,66 +108,247 @@
       font-size: 0.75rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      border-radius: 0;
-      transition: border-color 0.2s;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    .button:hover {
-      transform: none;
-      border-bottom-color: var(--accent);
-      color: var(--accent);
+    .button:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .section { margin-bottom: var(--space-80); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-80);
+      margin-bottom: var(--space-48);
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: var(--space-24);
     }
 
-    .button-primary {
-      background: transparent;
-      color: var(--ink);
-      font-weight: 600;
+    .grid-four { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-32); }
+    .feature-card { border-top: 1px solid var(--line); padding-top: var(--space-24); }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--space-48);
     }
 
-    .scenario-rail,
-    .scenario-output,
-    .monitor-panel {
-      border: none;
-      background: transparent;
-      padding: 0;
-    }
-
+    .scenario-rail { position: sticky; top: 20px; }
     .scenario-button {
-      border: none;
-      border-bottom: 1px solid var(--line);
-      padding: var(--space-16) 0;
-      background: transparent;
+      width: 100%; text-align: left; padding: var(--space-16) 0;
+      background: transparent; border: none; border-bottom: 1px solid var(--line);
+      cursor: pointer; transition: 0.2s;
     }
+    .scenario-button.active { border-bottom: 2px solid var(--accent); }
+    .scenario-button .name { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.25rem; }
 
-    .scenario-button.active {
-      border-left: none;
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .metric-card {
-      padding: var(--space-16) 0;
-      border: none;
-      border-top: 1px solid var(--line);
-      background: transparent;
-    }
-
-    .implication {
-      border: none;
-      border-top: 2px solid var(--ink);
-      background: var(--warm-ash-cream-dark);
+    .chart-container {
+      background: white;
       padding: var(--space-32);
+      border: 1px solid var(--line);
+      margin-top: var(--space-32);
     }
 
-    .trigger-card {
-      border: none;
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-24);
+      margin-bottom: var(--space-32);
+    }
+
+    .metric-card { border-top: 1px solid var(--line); padding-top: var(--space-16); }
+    .metric-card .label { font-family: "Space Grotesk", monospace; font-size: 0.65rem; text-transform: uppercase; color: var(--accent); }
+    .metric-card .value { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.75rem; }
+
+    .deliverables-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-24); }
+    .deliverable-card { border-top: 1px solid var(--line); padding-top: var(--space-24); text-decoration: none; color: inherit; transition: 0.2s; }
+    .deliverable-card:hover { border-top-color: var(--accent); }
+
+    .site-footer {
       border-top: 1px solid var(--line);
-      background: transparent;
-      padding: var(--space-24) 0;
+      padding: var(--space-48) 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: "Space Grotesk", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      opacity: 0.6;
     }
 
-    .trigger-meta div {
-      background: transparent;
-      border: none;
-      border-left: 1px solid var(--line);
-      padding: 0 0 0 var(--space-16);
+    @media (max-width: 900px) {
+      .hero-grid, .section-head, .grid-four, .demo-layout, .deliverables-grid { grid-template-columns: 1fr; gap: var(--space-32); }
+      .hero-panel { border-left: none; border-top: 1px solid var(--line); padding: var(--space-24) 0; }
     }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span style="width:8px;height:8px;background:var(--accent);display:inline-block"></span> Analyst Portfolio</div>
+          <h1>Snowflake underwriting you can review in three minutes.</h1>
+          <p>I built this as a single-name coverage exercise: variant view, three-case framing, and KPI monitoring. The point is to show how the thesis would be defended, updated, and pressure-tested after each print.</p>
+          <div class="hero-actions">
+            <a class="button" href="#interactive-demo">Scenario Walkthrough</a>
+            <a class="button" href="#kpi-history">Performance History</a>
+            <a class="button" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-" target="_blank">Open Repository</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h3>The Variant View</h3>
+          <p style="font-size:0.95rem; color:var(--muted)">Snowflake can be misread as a maturing warehouse story even while product-surface expansion keeps room for steadier long-run earnings power.</p>
+          <div class="meta-card" style="border-top:1px solid var(--line); padding-top:var(--space-16)">
+            <span class="mono" style="font-size:0.65rem; color:var(--accent)">Latest model point</span>
+            <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size:1.25rem">115% NRR / $282m FCF</div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="section" id="interactive-demo">
+      <div class="section-head">
+        <h2>Interactive Scenario Framing</h2>
+        <p>The scenario ranges below mirror the repo's model inputs. The point is to show how the underwriting changes when retention, margins, and valuation assumptions move.</p>
+      </div>
+      <div class="demo-layout">
+        <aside class="scenario-rail">
+          <div class="scenario-list">
+            <button class="scenario-button active" data-scenario="Base"><span class="name">Base Case</span></button>
+            <button class="scenario-button" data-scenario="Bull"><span class="name">Bull Case</span></button>
+            <button class="scenario-button" data-scenario="Bear"><span class="name">Bear Case</span></button>
+          </div>
+        </aside>
+        <div class="scenario-content">
+          <div class="metrics-grid" id="metrics-grid"></div>
+          <div class="chart-container">
+            <canvas id="scenarioChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kpi-history">
+      <div class="section-head">
+        <h2>Historical KPI Context</h2>
+        <p>Conviction depends on retention stability and clean cash conversion. These trends anchor the base-case debate.</p>
+      </div>
+      <div class="chart-container" style="height: 400px">
+        <canvas id="historyChart"></canvas>
+      </div>
+    </section>
+
+    <section class="section" id="deliverables">
+      <div class="deliverables-grid">
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Investment_Memo.md" target="_blank">
+          <h3>Investment Memo</h3>
+          <p>Full thesis write-up, risks, and variant view framing.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/brief/Catalyst_Tracker.md" target="_blank">
+          <h3>Catalyst Tracker</h3>
+          <p>Event framework and decision rules for updating conviction.</p>
+        </a>
+        <a class="deliverable-card" href="https://github.com/astew24/one-company-investment-dossier--SNOW-Snowflake-/blob/main/model/Model.xlsx" target="_blank">
+          <h3>Financial Model</h3>
+          <p>Full Excel workbook with KPI history and scenario drivers.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>Independent Equity Research Portfolio</div>
+      <div>Design System: <span style="color:var(--accent); font-weight:600">Impeccable</span></div>
+    </footer>
+  </div>
+
+  <script>
+    const scenarios = {
+      Base: { name: "Base Case", color: "#7ea099", metrics: [ {label:"3Y Rev CAGR", value:"22%"}, {label:"NRR", value:"114%"}, {label:"FCF Margin", value:"28%"} ], target: 185 },
+      Bull: { name: "Bull Case", color: "#689d71", metrics: [ {label:"3Y Rev CAGR", value:"28%"}, {label:"NRR", value:"120%"}, {label:"FCF Margin", value:"33%"} ], target: 240 },
+      Bear: { name: "Bear Case", color: "#b16d63", metrics: [ {label:"3Y Rev CAGR", value:"15%"}, {label:"NRR", value:"108%"}, {label:"FCF Margin", value:"22%"} ], target: 110 }
+    };
+
+    const historyData = {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q1', 'Q2', 'Q3', 'Q4'],
+      revenue: [590, 640, 730, 810, 890, 950, 1020, 1170],
+      fcf: [120, 150, 180, 210, 230, 250, 260, 282]
+    };
+
+    // Impeccable Chart Defaults
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { family: 'Space Grotesk' } } },
+        y: { grid: { color: 'rgba(0,0,0,0.05)' }, border: { display: false }, ticks: { font: { family: 'Space Grotesk' } } }
+      },
+      animation: { duration: 800, easing: 'easeOutQuart' }
+    };
+
+    let scenarioChart, historyChart;
+
+    function renderScenario(name) {
+      const s = scenarios[name];
+      document.getElementById('metrics-grid').innerHTML = s.metrics.map(m => `
+        <div class="metric-card">
+          <div class="label">${m.label}</div>
+          <div class="value">${m.value}</div>
+        </div>
+      `).join('');
+
+      const ctx = document.getElementById('scenarioChart').getContext('2d');
+      if (scenarioChart) scenarioChart.destroy();
+      
+      scenarioChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Scenario Price Target'],
+          datasets: [{
+            data: [s.target],
+            backgroundColor: s.color,
+            barThickness: 40
+          }]
+        },
+        options: {
+          ...chartOptions,
+          indexAxis: 'y',
+          scales: {
+            x: { ...chartOptions.scales.x, max: 260 },
+            y: { ...chartOptions.scales.y, display: false }
+          }
+        }
+      });
+
+      document.querySelectorAll('.scenario-button').forEach(b => {
+        b.classList.toggle('active', b.dataset.scenario === name);
+      });
+    }
+
+    function initHistory() {
+      const ctx = document.getElementById('historyChart').getContext('2d');
+      historyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: historyData.labels,
+          datasets: [
+            { label: 'Revenue ($m)', data: historyData.revenue, borderColor: '#e61e6e', borderWidth: 3, pointRadius: 0, tension: 0.2 },
+            { label: 'FCF ($m)', data: historyData.fcf, borderColor: '#1a1a1a', borderWidth: 2, pointRadius: 0, tension: 0.2, fill: true, backgroundColor: 'rgba(0,0,0,0.02)' }
+          ]
+        },
+        options: {
+          ...chartOptions,
+          plugins: { legend: { display: true, position: 'top', align: 'start', labels: { font: { family: 'Space Grotesk', size: 10 } } } }
+        }
+      });
+    }
+
+    document.querySelectorAll('.scenario-button').forEach(b => {
+      b.addEventListener('click', () => renderScenario(b.dataset.scenario));
+    });
+
+    renderScenario('Base');
+    initHistory();
+  </script>
+</body>
+</html>
