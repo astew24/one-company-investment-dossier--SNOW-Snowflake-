@@ -47,3 +47,14 @@ from the files in this repo.
    volatility, AI monetization uncertainty.
 
 *Independent equity research. Not investment advice.*
+
+## Design & Quality Standards
+
+This project adheres to the **Impeccable** design language, an editorial-grade system designed for professional-class AI applications.
+
+- **Typography:** Uses a tiered "authorial voice" hierarchy with *Cormorant Garamond* for display and *Instrument Sans* for high-readability body text.
+- **Color Theory:** Implemented strictly in the **OKLCH color space** for wide-gamut fidelity and perceptual consistency. The palette uses *Warm Ash Cream* (paper-not-white) and *Deep Graphite* (confidant-not-black).
+- **Spatial Logic:** Built on a "Magazine-scale" spacing hierarchy (8/16/24/32/48/80/120px) that prioritizes rhythm over generic app-grid density.
+- **Component Integrity:** Rejects common "AI slop" anti-patterns (generic purple gradients, card-in-card nesting, and pure black shadows) in favor of sharp, high-contrast signatures and editorial restraint.
+
+The resulting interface is designed to feel like a printed investment publication—restrained, authoritative, and focused on the evidence.
