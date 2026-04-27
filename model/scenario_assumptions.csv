@@ -1,4 +1,4 @@
 scenario,revenue_cagr_3yr,nrr_assumption,gross_margin_target,cfo_margin_target,capex_pct_revenue,wacc,terminal_growth
-Bear,15%,108%,72%,22%,4.0%,10.0%,2.5%
-Base,22%,114%,74%,28%,3.0%,9.0%,3.0%
-Bull,28%,120%,76%,33%,2.5%,8.5%,3.5%
+Bear,14%,107%,72%,21%,4.0%,10.5%,2.5%
+Base,22%,115%,74%,29%,3.0%,9.0%,3.0%
+Bull,28%,121%,76%,33%,2.5%,8.5%,3.5%
